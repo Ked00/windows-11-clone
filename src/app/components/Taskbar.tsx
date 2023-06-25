@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import {TextInput} from "@mantine/core";
+import {Button} from "@mantine/core";
 
 export default function Taskbar() {
   return (
@@ -25,13 +26,8 @@ export default function Taskbar() {
           alt="microsoft menu icon"
         />
 
-        <TextInput
-          placeholder="Search"
-          variant="filled"
-          radius="xl"
-          size="xs"
-        />
-        
+        <TextInput placeholder="Search" variant="filled" radius="xl" size="xs" />
+
         <Image
           src="/../public/edge.png"
           width={30}
@@ -63,50 +59,51 @@ export default function Taskbar() {
       </div>
 
       {/* end */}
-      <div className="flex p-3">
-        <Image
-          src="/../public/cloud.png"
-          width={50}
-          height={50}
-          quality={100}
-          alt="weather icon"
-          className=""
-        />
+      <div className="flex items-center">
+        <Button.Group>
+          <Button compact variant="light">
+            <Image
+              src="/../public/arrow.png"
+              width={40}
+              height={40}
+              quality={100}
+              alt="weather icon"
+              className="p-3"
+            />
+          </Button>
 
-        <div className="flex">
-          <Image
-            src="/../public/cloud.png"
-            width={50}
-            height={50}
-            quality={100}
-            alt="weather icon"
-            className=""
-          />
-          <Image
-            src="/../public/cloud.png"
-            width={50}
-            height={50}
-            quality={100}
-            alt="weather icon"
-            className=""
-          />
-          <Image
-            src="/../public/cloud.png"
-            width={50}
-            height={50}
-            quality={100}
-            alt="weather icon"
-            className=""
-          />
-        </div>
-        <Image
-          src="/../public/cloud.png"
-          width={50}
-          height={50}
-          quality={100}
-          alt="weather icon"
-          className=""
-        />
+          <Button compact variant="light">
+            <Image
+              src="/../public/wifi.png"
+              width={35}
+              height={35}
+              quality={100}
+              alt="weather icon"
+              className="p-2"
+            />
+
+            <Image
+              src="/../public/audio3.png"
+              width={35}
+              height={35}
+              quality={100}
+              alt="weather icon"
+              className="p-2"
+            />
+            <Image
+              src="/../public/battery.png"
+              width={35}
+              height={35}
+              quality={100}
+              alt="weather icon"
+              className="p-2"
+            />
+          </Button>
+        </Button.Group>
+          <div className="p-2 text-black">
+            <p className="text-xs">3:08 PM</p>
+            <p className="text-xs">6/25/23</p>
+          </div>
       </div>
     </div>
   );
