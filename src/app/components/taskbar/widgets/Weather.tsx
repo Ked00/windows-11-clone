@@ -31,7 +31,7 @@ export default function Weather() {
       <Drawer
         open={showing.isShowing}
         onClose={showing.reverseState}
-        ModalProps={{
+        PaperProps={{
           sx: {
             backgroundColor: "#eaeaea40",
             width: "50%",
@@ -41,9 +41,10 @@ export default function Weather() {
             borderRadius: "8px",
           },
         }}
-        className="backdrop-blur-xl"
         hideBackdrop={true}
-      ></Drawer>
+      >
+       <h3 className="text-center">5:21 PM</h3>
+      </Drawer>
     </>
   );
 }
