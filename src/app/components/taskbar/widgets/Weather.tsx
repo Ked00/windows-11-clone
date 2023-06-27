@@ -12,10 +12,8 @@ export default function Weather() {
       maxHeight: "750px",
       margin: "12px 0 0 12px",
       borderRadius: "8px",
-      opacity: "95%",
-      blur: "32px",
     },
-  };
+  }
   return (
     <>
       <IconButton
@@ -31,19 +29,9 @@ export default function Weather() {
       <Drawer
         open={showing.isShowing}
         onClose={showing.reverseState}
-        PaperProps={{
-          sx: {
-            backgroundColor: "#eaeaea40",
-            width: "50%",
-            minHeight: "500px",
-            maxHeight: "750px",
-            margin: "12px 0 0 12px",
-            borderRadius: "8px",
-          },
-        }}
+        PaperProps={style}
         hideBackdrop={true}
       >
-       <h3 className="text-center">5:21 PM</h3>
       </Drawer>
     </>
   );
