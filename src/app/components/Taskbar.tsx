@@ -2,21 +2,22 @@
 import Image from "next/image";
 import {TextInput} from "@mantine/core";
 import {Button} from "@mantine/core";
+import IconButton from "./IconButton";
+import MultiIconButton from "./taskbar/MultiIconButton";
+import DateAndTime from "./taskbar/systemTray/DateAndTime";
+import Weather from "./taskbar/widgets/Weather";
 
-export default function Taskbar() {
+type Props = {
+};
+
+export default function Taskbar(props: Props) {
   return (
     <div className="bg-[#f3f3f3]/[.85] fixed bottom-0 w-full h-[5.5%] flex justify-between">
-      {/* left */}
-      <Image
-        src="/../public/weather.png"
-        width={50}
-        height={50}
-        quality={100}
-        alt="weather icon"
-        className="p-2"
-      />
+      {/* widgets */}
 
-      {/* middle */}
+      <Weather/>
+
+      {/* quick launch */}
       <div className="flex justify-center p-2 space-x-5 items-center ml-28">
         <Image
           src="/../public/home.png"
@@ -58,52 +59,30 @@ export default function Taskbar() {
         />
       </div>
 
-      {/* end */}
+      {/* system tray*/}
       <div className="flex items-center">
         <Button.Group>
-          <Button compact variant="light">
-            <Image
-              src="/../public/arrow.png"
-              width={40}
-              height={40}
-              quality={100}
-              alt="weather icon"
-              className="p-3"
-            />
-          </Button>
+          <IconButton
+            src="arrow.png"
+            alt="microsoft expand icon"
+            iconCSs="p-3"
+            buttonCss="h-full"
+            width={35}
+            height={35}
+          />
 
-          <Button compact variant="light">
-            <Image
-              src="/../public/wifi.png"
-              width={35}
-              height={35}
-              quality={100}
-              alt="weather icon"
-              className="p-2"
-            />
-
-            <Image
-              src="/../public/audio3.png"
-              width={35}
-              height={35}
-              quality={100}
-              alt="weather icon"
-              className="p-2"
-            />
-            <Image
-              src="/../public/battery.png"
-              width={35}
-              height={35}
-              quality={100}
-              alt="weather icon"
-              className="p-2"
-            />
-          </Button>
+          <MultiIconButton
+            src1="wifi.png"
+            alt1="microsoft wifi icon"
+            src2="audio3.png"
+            alt2="microsoft audio icon"
+            src3="battery.png"
+            alt3="microsoft battery icon"
+            width={33}
+            height={33}
+          />
         </Button.Group>
-          <div className="p-2 text-black">
-            <p className="text-xs">3:08 PM</p>
-            <p className="text-xs">6/25/23</p>
-          </div>
+        <DateAndTime />
       </div>
     </div>
   );
