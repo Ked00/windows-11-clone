@@ -14,6 +14,7 @@ export default function Home() {
         fill={true}
         quality={100}
         alt="windows 11 desktop image"
+        priority={true}
       />
 
       {/* taskbar */}
