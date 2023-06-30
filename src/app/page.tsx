@@ -1,4 +1,10 @@
+"use client";
 import Image from "next/image";
+import Taskbar from "./components/Taskbar";
+import WidgetDrawer from "./components/taskbar/widgets/WidgetDrawer";
+
+// hooks
+import {useIsShowing} from "../app/hooks/isShowing";
 
 export default function Home() {
   return (
@@ -9,9 +15,10 @@ export default function Home() {
         quality={100}
         alt="windows 11 desktop image"
       />
-      <div className="bg-red-200 fixed bottom-0 w-full h-11">
-       
-       </div>
+
+      {/* taskbar */}
+      <Taskbar/>
+      <WidgetDrawer />
     </div>
   );
 }
