@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import Taskbar from "./components/Taskbar";
-import WidgetDrawer from "./components/taskbar/widgets/WidgetDrawer";
 
 // hooks
 import {useIsShowing} from "../app/hooks/isShowing";
@@ -19,7 +18,6 @@ export default function Home() {
 
       {/* taskbar */}
       <Taskbar/>
-      <WidgetDrawer />
     </div>
   );
 }

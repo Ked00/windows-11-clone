@@ -5,7 +5,7 @@ import {Button} from "@mantine/core";
 import IconButton from "./IconButton";
 import MultiIconButton from "./taskbar/MultiIconButton";
 import DateAndTime from "./taskbar/systemTray/DateAndTime";
-import Weather from "./taskbar/widgets/Weather";
+import Widgets from "./taskbar/widgets/Widgets";
 
 type Props = {
 };
@@ -15,7 +15,7 @@ export default function Taskbar(props: Props) {
     <div className="bg-[#f3f3f3]/[.85] fixed bottom-0 w-full h-[5.5%] flex justify-between">
       {/* widgets */}
 
-      <Weather/>
+      <Widgets/>
 
       {/* quick launch */}
       <div className="flex justify-center p-2 space-x-5 items-center ml-28">
