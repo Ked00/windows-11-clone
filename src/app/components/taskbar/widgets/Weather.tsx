@@ -4,6 +4,7 @@ import MoreHoriz from "@mui/icons-material/MoreHoriz";
 import axios from "axios";
 import {useEffect, useState} from "react";
 import Image from "next/image";
+import InteractiveMap from "./InteractiveMap";
 
 type Response = {
   success: boolean;
@@ -88,15 +89,18 @@ type Response = {
 
 export default function Weather() {
   const [data, setData] = useState<Response | null>(null);
+  const temp = `${data?.response[0].periods[0].tempF}`.slice(0, 2);
+  const lat = data!.response[0].loc.lat ? data!.response[0].loc.lat : 47.5
+  const long = data!.response[0].loc.long ? data!.response[0].loc.long : -121.5
 
   useEffect(() => {
     axios
       .get<Response>(
-        "https://api.aerisapi.com/conditions/kenner,la?format=json&plimit=1&filter=1min&client_id=OSobwDW7mgt0pXlx55HVQ&client_secret=mqbsZRnL1opLjBCvhAW6Za4ejxcxJP8V3qOgouTY"
+        "https://api.aerisapi.com/conditions/kenner,la?format=json&plimit=1&filter=1min&"
       )
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
-  }, [data?.response[0]]);
+  }, []);
 
   return (
     <Grid item xs={6} className="h-[350px] mb-3">
@@ -109,29 +113,19 @@ export default function Weather() {
             </div>
             <MoreHoriz />
           </div>
+
           <div className="h-1/4 flex align-items-center">
-            <div>
-              <Image
-                src="/../public/weather.png"
-                height={30}
-                width={70}
-                alt="weather widget"
-                quality={100}
-              />
-              <h1>{data?.response[0].periods[0].tempF}</h1>
-            </div>
-            <div className="flex">
-              <Image
-                src="/../public/weather.png"
-                height={5}
-                width={10}
-                alt="weather widget"
-                quality={100}
-              />
-              <p>Hello this is the weather</p>
-              <ExpandMore />
-            </div>
+            <Image
+              src="/../public/weather.png"
+              height={30}
+              width={70}
+              alt="weather widget"
+              quality={100}
+            />
+            <h1>{temp}</h1>
           </div>
+
+          <InteractiveMap lat={lat} long={long} />
         </Paper>
       </Card>
     </Grid>
