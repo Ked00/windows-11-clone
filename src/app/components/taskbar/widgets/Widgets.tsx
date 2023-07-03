@@ -3,8 +3,16 @@ import IconButton from "../../IconButton";
 import {Drawer, Grid, Card, Paper} from "@mui/material";
 import Image from "next/image";
 import Weather from "./Weather";
+import {Response} from "../../../business-logic/api-types/weatherResponse";
 
-export default function Widgets() {
+type Props = {
+  data: Response | undefined;
+  temp: string,
+  lat: number,
+  long: number
+};
+
+export default function Widgets(props: Props) {
   const showing = useIsShowing(false);
   const style = {
     sx: {
@@ -16,7 +24,6 @@ export default function Widgets() {
       borderRadius: "8px",
     },
   };
-
   return (
     <>
       <IconButton
@@ -38,7 +45,7 @@ export default function Widgets() {
         <div className=" w-3/4 ml-16">
           <h1 className="text-center">3:50 PM</h1>
           <Grid container>
-            <Weather />
+            <Weather data={props.data} temp={props.temp} lat={props.lat} long={props.long}/>
             <Grid item xs={5.5} className="ml-3 mb-3">
               <Card className="h-2/4">
                 <p>hello</p>

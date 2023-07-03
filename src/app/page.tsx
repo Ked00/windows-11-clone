@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
 import Taskbar from "./components/Taskbar";
-
+import {useEffect, useState} from "react";
+import axios from "axios";
 // hooks
 import {useIsShowing} from "../app/hooks/isShowing";
 
@@ -17,7 +18,7 @@ export default function Home() {
       />
 
       {/* taskbar */}
-      <Taskbar/>
+      <Taskbar />
     </div>
   );
 }

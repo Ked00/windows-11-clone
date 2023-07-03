@@ -6,16 +6,29 @@ import IconButton from "./IconButton";
 import MultiIconButton from "./taskbar/MultiIconButton";
 import DateAndTime from "./taskbar/systemTray/DateAndTime";
 import Widgets from "./taskbar/widgets/Widgets";
+import { Response } from "../business-logic/api-types/weatherResponse";
+import { useState, useEffect } from "react";
+import axios from "axios"
 
-type Props = {
-};
+export default function Taskbar() {
+  const [data, setData] = useState<Response | undefined>(undefined);
+  const temp = `${data?.response[0].periods[0].tempF}`.slice(0, 2);
+  const lat = data?.response[0].loc.lat ? data!.response[0].loc.lat : 47.5;
+  const long = data?.response[0].loc.long ? data!.response[0].loc.long : -121.5;
 
-export default function Taskbar(props: Props) {
+  useEffect(() => {
+    axios
+      .get<Response >(
+        "https://api.aerisapi.com/conditions/kenner,la?format=json&plimit=1&filter=1min&client_id=OSobwDW7mgt0pXlx55HVQ&client_secret=mqbsZRnL1opLjBCvhAW6Za4ejxcxJP8V3qOgouTY"
+      )
+      .then((res) => setData(res.data))
+      .catch((err) => console.log(err));
+  }, []);
   return (
     <div className="bg-[#f3f3f3]/[.85] fixed bottom-0 w-full h-[5.5%] flex justify-between">
       {/* widgets */}
 
-      <Widgets/>
+      <Widgets data={data} temp={temp} lat={lat} long={long}/>
 
       {/* quick launch */}
       <div className="flex justify-center p-2 space-x-5 items-center ml-28">

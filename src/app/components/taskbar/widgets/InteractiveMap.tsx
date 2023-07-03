@@ -9,8 +9,8 @@ type Props = {
 
 export default function InteractiveMap(props:Props) {
   const aeris = new AerisWeather(
-    "",
-    ""
+    "OSobwDW7mgt0pXlx55HVQ",
+    "mqbsZRnL1opLjBCvhAW6Za4ejxcxJP8V3qOgouTY"
   );
 
   aeris.views().then((views) => {
