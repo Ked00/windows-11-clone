@@ -2,9 +2,9 @@ import {Card} from "@mui/material";
 import {Image} from "react-bootstrap";
 
 type Props = {
-  name: string | null;
-  title: string | null;
-  image: string | null;
+  name: string | undefined | null;
+  title: string | undefined | null;
+  image: string | undefined | null;
 };
 
 export default function NewsCard(props: Props) {

@@ -4,14 +4,14 @@ import {Drawer, Grid, Card, Paper} from "@mui/material";
 import Weather from "./Weather";
 import {Response} from "../../../business-logic/api/api-types/weatherResponse";
 import NewsCard from "./NewsCard";
-import { newsResponse } from "@/app/business-logic/api/api-types/newsResponse";
+import {newsResponse} from "@/app/business-logic/api/api-types/newsResponse";
 
 type Props = {
   weatherData: Response | undefined;
   temp: string;
   lat: number;
   long: number;
-  newsData: newsResponse | null
+  newsData: newsResponse | undefined;
 };
 
 export default function Widgets(props: Props) {
@@ -27,11 +27,6 @@ export default function Widgets(props: Props) {
     },
   };
 
-  const newsInfo = props.newsData?.articles.map(item => {
-    return(
-      <NewsCard name={item.source.name} title={item.title} image={item.urlToImage}/>
-    )
-  })
   return (
     <>
       <IconButton
@@ -53,10 +48,24 @@ export default function Widgets(props: Props) {
         <div className=" w-3/4 ml-24">
           <h1 className="text-center">3:50 PM</h1>
           <Grid container>
-            <Weather weatherData={props.weatherData} temp={props.temp} lat={props.lat} long={props.long} />
+            <Weather
+              weatherData={props.weatherData}
+              temp={props.temp}
+              lat={props.lat}
+              long={props.long}
+            />
 
             <Grid item xs={5.5} className="ml-3 mb-3">
-              {newsInfo}
+              <NewsCard
+                title={props.newsData?.articles[0].title}
+                image={props.newsData?.articles[0].urlToImage}
+                name={props.newsData?.articles[0].source.name}
+              />
+              <NewsCard
+                title={props.newsData?.articles[1]?.title}
+                image={props.newsData?.articles[1]!.urlToImage}
+                name={props.newsData?.articles[1]!.source.name}
+              />
             </Grid>
 
             <Grid item xs={6} className="h-[350px] mb-3">
@@ -68,12 +77,16 @@ export default function Widgets(props: Props) {
             </Grid>
 
             <Grid item xs={5.5} className="ml-3 mb-3">
-              <Card className="h-2/4">
-                <p>hello</p>
-              </Card>
-              <Card className="h-2/4">
-                <p>hello</p>
-              </Card>
+              <NewsCard
+                title={props.newsData?.articles[2].title}
+                image={props.newsData?.articles[2].urlToImage}
+                name={props.newsData?.articles[2].source.name}
+              />
+              <NewsCard
+                title={props.newsData?.articles[3]!.title}
+                image={props.newsData?.articles[3]!.urlToImage}
+                name={props.newsData?.articles[3]!.source.name}
+              />
             </Grid>
 
             <Grid item xs={6} className=" h-[350px] mr-2">
