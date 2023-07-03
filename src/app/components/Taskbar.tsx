@@ -8,21 +8,25 @@ import DateAndTime from "./taskbar/systemTray/DateAndTime";
 import Widgets from "./taskbar/widgets/Widgets";
 import {useEffect} from "react";
 import useWeatherInfo from "../business-logic/api/api-calls/weatherInfo";
+import useNewsInfo from "../business-logic/api/api-calls/newsInfo";
 
 export default function Taskbar() {
   const weatherInfo = useWeatherInfo();
+  const newsInfo = useNewsInfo();
 
   useEffect(() => {
     weatherInfo.getInfo();
+    newsInfo.getInfo();
   }, []);
 
   return (
     <div className="bg-[#f3f3f3]/[.85] fixed bottom-0 w-full h-[5.5%] flex justify-between">
       <Widgets
-        data={weatherInfo.data}
+        weatherData={weatherInfo.data}
         temp={weatherInfo.temp}
         lat={weatherInfo.lat}
         long={weatherInfo.long}
+        newsData={newsInfo.data}
       />
 
       {/* quick launch */}

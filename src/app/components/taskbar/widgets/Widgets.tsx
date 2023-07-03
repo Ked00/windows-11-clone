@@ -3,13 +3,15 @@ import IconButton from "../../IconButton";
 import {Drawer, Grid, Card, Paper} from "@mui/material";
 import Weather from "./Weather";
 import {Response} from "../../../business-logic/api/api-types/weatherResponse";
-import {Image} from "react-bootstrap";
+import NewsCard from "./NewsCard";
+import { newsResponse } from "@/app/business-logic/api/api-types/newsResponse";
 
 type Props = {
-  data: Response | undefined;
+  weatherData: Response | undefined;
   temp: string;
   lat: number;
   long: number;
+  newsData: newsResponse | null
 };
 
 export default function Widgets(props: Props) {
@@ -24,6 +26,12 @@ export default function Widgets(props: Props) {
       borderRadius: "8px",
     },
   };
+
+  const newsInfo = props.newsData?.articles.map(item => {
+    return(
+      <NewsCard name={item.source.name} title={item.title} image={item.urlToImage}/>
+    )
+  })
   return (
     <>
       <IconButton
@@ -45,26 +53,10 @@ export default function Widgets(props: Props) {
         <div className=" w-3/4 ml-24">
           <h1 className="text-center">3:50 PM</h1>
           <Grid container>
-            <Weather data={props.data} temp={props.temp} lat={props.lat} long={props.long} />
+            <Weather weatherData={props.weatherData} temp={props.temp} lat={props.lat} long={props.long} />
 
             <Grid item xs={5.5} className="ml-3 mb-3">
-              <Card className="h-2/4 p-3">
-                <div className="flex mb-3">
-                  <Image
-                    src="https://i.ytimg.com/vi/scFQaqRzC7A/hqdefault.jpg"
-                    height="1px"
-                    width="30px"
-                    alt="weather widget"
-                  />
-                  <span className="mx-3">The outsiders</span>
-                </div>
-                <h5>
-                  lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem
-                </h5>
-              </Card>
-              <Card className="h-2/4">
-                <p>hello</p>
-              </Card>
+              {newsInfo}
             </Grid>
 
             <Grid item xs={6} className="h-[350px] mb-3">
