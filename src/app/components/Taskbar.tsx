@@ -6,21 +6,18 @@ import IconButton from "./IconButton";
 import MultiIconButton from "./taskbar/MultiIconButton";
 import DateAndTime from "./taskbar/systemTray/DateAndTime";
 import Widgets from "./taskbar/widgets/Widgets";
-import {Response} from "../business-logic/api/api-types/weatherResponse";
-import {useState, useEffect} from "react";
-import axios from "axios";
+import {useEffect} from "react";
 import useWeatherInfo from "../business-logic/api/api-calls/weatherInfo";
 
 export default function Taskbar() {
   const weatherInfo = useWeatherInfo();
+
   useEffect(() => {
     weatherInfo.getInfo();
   }, []);
 
   return (
     <div className="bg-[#f3f3f3]/[.85] fixed bottom-0 w-full h-[5.5%] flex justify-between">
-      {/* widgets */}
-
       <Widgets
         data={weatherInfo.data}
         temp={weatherInfo.temp}

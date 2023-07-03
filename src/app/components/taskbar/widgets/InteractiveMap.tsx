@@ -27,5 +27,5 @@ export default function InteractiveMap(props:Props) {
     });
   });
 
-  return <div id="map" className="h-2/4 w-full rounded"></div>;
+  return <div id="map" className="h-[60%] w-full rounded"></div>;
 }

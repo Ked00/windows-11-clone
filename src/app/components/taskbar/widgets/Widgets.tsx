@@ -1,15 +1,15 @@
 import {useIsShowing} from "@/app/hooks/isShowing";
 import IconButton from "../../IconButton";
 import {Drawer, Grid, Card, Paper} from "@mui/material";
-import Image from "next/image";
 import Weather from "./Weather";
 import {Response} from "../../../business-logic/api/api-types/weatherResponse";
+import {Image} from "react-bootstrap";
 
 type Props = {
   data: Response | undefined;
-  temp: string,
-  lat: number,
-  long: number
+  temp: string;
+  lat: number;
+  long: number;
 };
 
 export default function Widgets(props: Props) {
@@ -17,7 +17,7 @@ export default function Widgets(props: Props) {
   const style = {
     sx: {
       backgroundColor: "#eaeaea40",
-      width: "50%",
+      width: "70%",
       minHeight: "500px",
       maxHeight: "750px",
       margin: "12px 0 0 12px",
@@ -42,13 +42,25 @@ export default function Widgets(props: Props) {
         PaperProps={style}
         hideBackdrop={true}
       >
-        <div className=" w-3/4 ml-16">
+        <div className=" w-3/4 ml-24">
           <h1 className="text-center">3:50 PM</h1>
           <Grid container>
-            <Weather data={props.data} temp={props.temp} lat={props.lat} long={props.long}/>
+            <Weather data={props.data} temp={props.temp} lat={props.lat} long={props.long} />
+
             <Grid item xs={5.5} className="ml-3 mb-3">
-              <Card className="h-2/4">
-                <p>hello</p>
+              <Card className="h-2/4 p-3">
+                <div className="flex mb-3">
+                  <Image
+                    src="https://i.ytimg.com/vi/scFQaqRzC7A/hqdefault.jpg"
+                    height="1px"
+                    width="30px"
+                    alt="weather widget"
+                  />
+                  <span className="mx-3">The outsiders</span>
+                </div>
+                <h5>
+                  lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem
+                </h5>
               </Card>
               <Card className="h-2/4">
                 <p>hello</p>
