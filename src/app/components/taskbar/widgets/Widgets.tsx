@@ -3,7 +3,7 @@ import IconButton from "../../IconButton";
 import {Drawer, Grid, Card, Paper} from "@mui/material";
 import Image from "next/image";
 import Weather from "./Weather";
-import {Response} from "../../../business-logic/api-types/weatherResponse";
+import {Response} from "../../../business-logic/api/api-types/weatherResponse";
 
 type Props = {
   data: Response | undefined;
