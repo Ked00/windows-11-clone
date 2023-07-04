@@ -3,12 +3,12 @@ import axios from "axios";
 import {newsResponse} from "../api-types/newsResponse";
 
 type outPut = {
-  data: newsResponse | null;
+  data: newsResponse | undefined;
   getInfo: () => void;
 };
 
 export default function useNewsInfo(): outPut {
-  const [data, setData] = useState<newsResponse | null>(null);
+  const [data, setData] = useState<newsResponse | undefined>(undefined);
 
   function getInfo() {
     axios

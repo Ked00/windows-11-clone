@@ -5,6 +5,7 @@ import Weather from "./Weather";
 import {Response} from "../../../business-logic/api/api-types/weatherResponse";
 import NewsCard from "./NewsCard";
 import {newsResponse} from "@/app/business-logic/api/api-types/newsResponse";
+import TrafficWidget from "./TrafficWidget";
 
 type Props = {
   weatherData: Response | undefined;
@@ -55,11 +56,12 @@ export default function Widgets(props: Props) {
               long={props.long}
             />
 
-            <Grid item xs={5.5} className="ml-3 mb-3">
+            <Grid item xs={5.5} className="ml-3 mb-2">
               <NewsCard
                 title={props.newsData?.articles[0].title}
                 image={props.newsData?.articles[0].urlToImage}
                 name={props.newsData?.articles[0].source.name}
+                marginBottom={true}
               />
               <NewsCard
                 title={props.newsData?.articles[1]?.title}
@@ -68,19 +70,14 @@ export default function Widgets(props: Props) {
               />
             </Grid>
 
-            <Grid item xs={6} className="h-[350px] mb-3">
-              <Card className="h-full relative">
-                <Paper>
-                  <h5>Kenner</h5>
-                </Paper>
-              </Card>
-            </Grid>
+            <TrafficWidget lat={props.lat} long={props.long} />
 
             <Grid item xs={5.5} className="ml-3 mb-3">
               <NewsCard
                 title={props.newsData?.articles[2].title}
                 image={props.newsData?.articles[2].urlToImage}
                 name={props.newsData?.articles[2].source.name}
+                marginBottom={true}
               />
               <NewsCard
                 title={props.newsData?.articles[3]!.title}
