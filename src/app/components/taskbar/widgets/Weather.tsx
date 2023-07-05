@@ -13,7 +13,7 @@ type Props = {
 
 export default function Weather(props: Props) {
   return (
-    <Grid item xs={6} className="h-[350px]">
+    <Grid item xs={6} className="h-[350px] mb-3">
       <Card className="h-full relative">
         <Paper className="h-full p-3">
           <div className="flex justify-between">

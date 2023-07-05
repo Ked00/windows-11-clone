@@ -6,6 +6,7 @@ import {Response} from "../../../business-logic/api/api-types/weatherResponse";
 import NewsCard from "./NewsCard";
 import {newsResponse} from "@/app/business-logic/api/api-types/newsResponse";
 import TrafficWidget from "./TrafficWidget";
+import SportsWidget from "./SportsWidget";
 
 type Props = {
   weatherData: Response | undefined;
@@ -33,7 +34,6 @@ export default function Widgets(props: Props) {
       <IconButton
         src="weather.png"
         alt="weather icon"
-        iconCSs="p-1"
         buttonCss="h-full"
         width={40}
         height={40}
@@ -86,13 +86,7 @@ export default function Widgets(props: Props) {
               />
             </Grid>
 
-            <Grid item xs={6} className=" h-[350px] mr-2">
-              <Card className="h-full relative">
-                <Paper>
-                  <h5>Kenner</h5>
-                </Paper>
-              </Card>
-            </Grid>
+            <SportsWidget />
             <Grid item xs={5.7} className=" h-[350px]">
               <Card className="h-full relative">
                 <Paper>

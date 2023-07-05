@@ -3,7 +3,7 @@ import Image from "next/image";
 import MoreHoriz from "@mui/icons-material/MoreHoriz";
 import tt from "@tomtom-international/web-sdk-maps";
 import "@tomtom-international/web-sdk-maps/dist/maps.css";
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react"
 
 type Props = {
   lat: number;
@@ -12,14 +12,14 @@ type Props = {
 
 export default function TrafficWidget(props: Props) {
   const [map, setMap] = useState({});
-  const mapElement = useRef("");
+  const mapElement = useRef();
 
   useEffect(() => {
     const map = tt.map({
-      key: "",
-      container: mapElement.current,
+      key: "GwZGwzhznTIA3uwxHuRFZ24FvwoZkRgd",
+      container: mapElement.current!,
       center: [props.long, props.lat],
-      zoom: 13
+      zoom: 13,    
     });
 
     setMap(map);
@@ -45,10 +45,10 @@ export default function TrafficWidget(props: Props) {
 
           <div className="mt-3">
             <h5>1-10 / Loyola Dr (1)</h5>
-            <p>Updated 9 mins ago</p>
+            <p className="text-gray-600 text-sm">Updated 9 mins ago</p>
           </div>
 
-          <div className="h-4/6" ref={mapElement}></div>
+          <div className="h-4/6 relative" ref={mapElement}></div>
         </Paper>
       </Card>
     </Grid>
