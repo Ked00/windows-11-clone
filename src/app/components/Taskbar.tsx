@@ -79,8 +79,8 @@ export default function Taskbar() {
             alt="microsoft expand icon"
             iconCSs="p-3"
             buttonCss="h-full"
-            width={35}
-            height={35}
+            width={45}
+            height={45}
           />
 
           <MultiIconButton
