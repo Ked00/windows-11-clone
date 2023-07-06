@@ -18,7 +18,7 @@ export default function Weather(props: Props) {
         <Paper className="h-full p-3">
           <div className="flex justify-between">
             <div className="flex">
-              <h5>{props.weatherData?.response[0].place.name}</h5>
+              <h5>{props.weatherData!.response[0]!.place.name}</h5>
               <ExpandMore />
             </div>
             <MoreHoriz />

@@ -7,7 +7,7 @@ type outPut = {
   temp: string;
   lat: number;
   long: number;
-  getInfo: ()=> void
+  getInfo: () => void;
 };
 
 export default function useWeatherInfo(): outPut {
@@ -25,11 +25,11 @@ export default function useWeatherInfo(): outPut {
       .catch((err) => console.log(err));
   }
 
-  return{
+  return {
     data: data,
     temp: temp,
     lat: lat,
     long: long,
-    getInfo: getInfo
-  }
+    getInfo: getInfo,
+  };
 }
