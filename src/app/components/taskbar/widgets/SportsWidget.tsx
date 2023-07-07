@@ -1,24 +1,19 @@
-import axios from "axios";
 import {Grid, Card, Paper} from "@mui/material";
 import {useEffect} from "react";
 import GameCard from "./GameCard";
+import useLiveMlbGamesInfo from "@/app/business-logic/api/api-calls/liveMlbGamesInfo";
+import useScheduledMatchesInfo from "@/app/business-logic/api/api-calls/schedulesMatchinfo";
 
 export default function SportsWidget() {
-  const options = {
-    method: "GET",
-    url: "https://sportscore1.p.rapidapi.com/sports/1/players",
-    params: {page: "1"},
-    headers: {
-      ,
-    },
-  };
+  const liveGames = useLiveMlbGamesInfo();
+  const scheduledGames = useScheduledMatchesInfo(7, 6, 2023);
 
   useEffect(() => {
-    axios
-      .request(options)
-      .then((res) => console.log(res.data))
-      .catch((err) => console.log(err));
+    // liveGames.getInfo()
+    // scheduledGames.getInfo();
   }, []);
+
+  console.log(scheduledGames.scheduledMatches)
 
   return (
     <Grid item xs={6} className=" h-[350px] mr-2">
@@ -32,3 +27,5 @@ export default function SportsWidget() {
     </Grid>
   );
 }
+
+
