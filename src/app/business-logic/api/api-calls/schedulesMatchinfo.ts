@@ -3,11 +3,11 @@ import {useState} from "react";
 
 type outPut = {
   getInfo: () => void;
-  scheduledMatches: scheduledMatchesResponse | undefined;
+  scheduledMatches: scheduledMatchesResponse | string;
 };
 
 export default function useScheduledMatchesInfo(month: number, day: number, year: number): outPut {
-  const [scheduledMatches, setScheduledMatches] = useState<scheduledMatchesResponse | undefined>(undefined);
+  const [scheduledMatches, setScheduledMatches] = useState<scheduledMatchesResponse | string>("");
 
   const options = {
     method: "GET",
@@ -21,7 +21,7 @@ export default function useScheduledMatchesInfo(month: number, day: number, year
   function getInfo() {
     axios
       .request(options)
-      .then((res) => setScheduledMatches(res.data))
+      .then((res) => setScheduledMatches(res.data.events))
       .catch((err) => console.log(err));
   }
 

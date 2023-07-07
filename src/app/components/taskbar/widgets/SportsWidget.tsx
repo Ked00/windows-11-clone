@@ -10,7 +10,7 @@ export default function SportsWidget() {
 
   useEffect(() => {
     // liveGames.getInfo()
-    // scheduledGames.getInfo();
+    scheduledGames.getInfo();
   }, []);
 
   console.log(scheduledGames.scheduledMatches)
@@ -19,13 +19,20 @@ export default function SportsWidget() {
     <Grid item xs={6} className=" h-[350px] mr-2">
       <Card className="h-full relative">
         <Paper>
-          <GameCard />
-          <GameCard />
-          <GameCard />
+          <GameCard
+            awayTeamName={scheduledGames.scheduledMatches[0].awayTeam.name}
+            homeTeamName={scheduledGames?.scheduledMatches[0].homeTeam.name}
+          />
+          <GameCard
+            awayTeamName={scheduledGames.scheduledMatches[1].awayTeam.name}
+            homeTeamName={scheduledGames?.scheduledMatches[1].homeTeam.name}
+          />
+           <GameCard
+            awayTeamName={scheduledGames.scheduledMatches[2].awayTeam.name}
+            homeTeamName={scheduledGames?.scheduledMatches[2].homeTeam.name}
+          />
         </Paper>
       </Card>
     </Grid>
   );
 }
-
-
