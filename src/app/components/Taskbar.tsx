@@ -9,14 +9,22 @@ import Widgets from "./taskbar/widgets/Widgets";
 import {useEffect} from "react";
 import useWeatherInfo from "../business-logic/api/api-calls/weatherInfo";
 import useNewsInfo from "../business-logic/api/api-calls/newsInfo";
+import useLiveMlbGamesInfo from "../business-logic/api/api-calls/liveMlbGamesInfo";
+import useScheduledMatchesInfo from "../business-logic/api/api-calls/schedulesMatchinfo";
 
 export default function Taskbar() {
   const weatherInfo = useWeatherInfo();
   const newsInfo = useNewsInfo();
 
+  // pass props to sports cards
+  const liveGames = useLiveMlbGamesInfo();
+  const scheduledGames = useScheduledMatchesInfo(7, 6, 2023);
+
   useEffect(() => {
     weatherInfo.getInfo();
     newsInfo.getInfo();
+    liveGames.getInfo()
+    scheduledGames.getInfo();
   }, []);
 
   return (

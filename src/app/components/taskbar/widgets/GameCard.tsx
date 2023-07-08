@@ -3,25 +3,25 @@ import Image from "next/image";
 type Props = {
   homeTeamName: string;
   awayTeamName: string;
-  homeTeamScore?: number;
-  awayTeamScore?: number;
+  homeTeamScore: number;
+  awayTeamScore: number;
   homeTeamImage?: string;
   awayTeamImage?: string;
 };
 
 export default function GameCard(props: Props) {
   return (
-    <div className="flex justify-between border-3 border-red-400 rounded mb-2 items-center">
-      <div className="p-2">
+    <div className="flex justify-between rounded items-center border-1 mb-1">
+      <div className="">
         <Image src={`/../public/teamLogo.png`} width={30} height={30} alt="change alt" />
-        <p>{props.homeTeamName}</p>
+        <p className="w-32">{props.homeTeamName}</p>
       </div>
 
-      <h4>{`${props.homeTeamScore} - ${props.awayTeamScore}`}</h4> 
+     {props.homeTeamScore >= 0 ?  <h5>{`${props.homeTeamScore} - ${props.awayTeamScore}`}</h5> : ""}
 
-      <div>
+      <div className="">
         <Image src={`/../public/teamLogo.png`} width={30} height={30} alt="change alt" />
-        <p>{props.awayTeamName}</p>
+        <p className="w-32">{props.awayTeamName}</p>
       </div>
     </div>
   );
