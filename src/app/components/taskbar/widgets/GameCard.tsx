@@ -11,16 +11,16 @@ type Props = {
 
 export default function GameCard(props: Props) {
   return (
-    <div className="flex justify-between rounded items-center border-1 mb-1">
-      <div className="">
-        <Image src={`/../public/teamLogo.png`} width={30} height={30} alt="change alt" />
+    <div className="flex justify-between items-center place-items-center rounded border-1 mb-1">
+      <div className="flex flex-col items-center text-center">
+        <Image src={`/../public/philly.jpeg`} width={50} height={50} alt="change alt" className="mt-2"/>
         <p className="w-32">{props.homeTeamName}</p>
       </div>
 
-     {props.homeTeamScore >= 0 ?  <h5>{`${props.homeTeamScore} - ${props.awayTeamScore}`}</h5> : ""}
+      {props.homeTeamScore >= 0 ? <h5>{`${props.homeTeamScore} - ${props.awayTeamScore}`}</h5> : ""}
 
-      <div className="">
-        <Image src={`/../public/teamLogo.png`} width={30} height={30} alt="change alt" />
+      <div className="flex flex-col items-center text-center">
+        <Image src={`/../public/philly.jpeg`} width={50} height={50} alt="change alt" />
         <p className="w-32">{props.awayTeamName}</p>
       </div>
     </div>

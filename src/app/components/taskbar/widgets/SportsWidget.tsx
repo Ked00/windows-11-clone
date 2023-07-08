@@ -1,33 +1,38 @@
 import {Grid, Card, Paper} from "@mui/material";
-import {useEffect} from "react";
 import GameCard from "./GameCard";
-import useLiveMlbGamesInfo from "@/app/business-logic/api/api-calls/liveMlbGamesInfo";
-import useScheduledMatchesInfo from "@/app/business-logic/api/api-calls/schedulesMatchinfo";
+import Image from "next/image";
+import MoreHoriz from "@mui/icons-material/MoreHoriz";
 
 export default function SportsWidget() {
-
   return (
-    <Grid item xs={6} className=" h-[350px] mr-2">
+    <Grid item xs={6} className=" h-[370px] mr-2">
       <Card className="h-full relative">
         <Paper className="p-2">
-          {/* {liveGames.liveMatches.length === 0 ? <p>Live Games</p> : <p>Upcoming games</p>} */}
+          <div className="p-2 flex justify-between ">
+            <div className="w-2/4 flex">
+              <Image src="/../public/mlb.png" width={25} height={10} alt="mlb logo" className="" />
+              <span className="mx-3">MLB</span>
+            </div>
+            <MoreHoriz />
+          </div>
+          <p className="p-1">Recently selected</p>
           <GameCard
-            awayTeamName="miami-marlins-king"
-            homeTeamName="miami-marlins-king"
-            homeTeamScore={0}
-            awayTeamScore={0}
+            awayTeamName="marlins"
+            homeTeamName="marlins"
+            homeTeamScore={2}
+            awayTeamScore={3}
           />
           <GameCard
-            awayTeamName="miami-marlins-king"
-            homeTeamName="miami-marlins-king"
-            homeTeamScore={0}
-            awayTeamScore={0}
+            awayTeamName="marlins"
+            homeTeamName="marlins"
+            homeTeamScore={4}
+            awayTeamScore={1}
           />
           <GameCard
-            awayTeamName="miami-marlins-king"
-            homeTeamName="miami-marlins-king"
-            homeTeamScore={0}
-            awayTeamScore={0}
+            awayTeamName="marlins"
+            homeTeamName="marlins"
+            homeTeamScore={5}
+            awayTeamScore={9}
           />
         </Paper>
       </Card>

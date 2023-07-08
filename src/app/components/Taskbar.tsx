@@ -23,9 +23,11 @@ export default function Taskbar() {
   useEffect(() => {
     weatherInfo.getInfo();
     newsInfo.getInfo();
-    liveGames.getInfo()
-    scheduledGames.getInfo();
+    // liveGames.getInfo()
+    // scheduledGames.getInfo();
   }, []);
+
+  console.log(liveGames.liveMatches)
 
   return (
     <div className="bg-[#f3f3f3]/[.85] fixed bottom-0 w-full h-[5.5%] flex justify-between">
