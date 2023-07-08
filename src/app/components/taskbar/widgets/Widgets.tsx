@@ -7,6 +7,8 @@ import NewsCard from "./NewsCard";
 import {newsResponse} from "@/app/business-logic/api/api-types/newsResponse";
 import TrafficWidget from "./TrafficWidget";
 import SportsWidget from "./SportsWidget";
+import useDateAndTime from "@/app/hooks/dateAndTime";
+import {useEffect} from "react";
 
 type Props = {
   weatherData: Response | undefined;
@@ -18,6 +20,7 @@ type Props = {
 
 export default function Widgets(props: Props) {
   const showing = useIsShowing(false);
+  const current = useDateAndTime();
   const style = {
     sx: {
       backgroundColor: "#eaeaea40",
@@ -47,7 +50,7 @@ export default function Widgets(props: Props) {
         hideBackdrop={true}
       >
         <div className=" w-3/4 ml-24">
-          <h1 className="text-center">3:50 PM</h1>
+          <h1 className="text-center my-4">{current.time}</h1>
           <Grid container>
             <Weather
               weatherData={props.weatherData}

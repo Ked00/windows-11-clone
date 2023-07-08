@@ -38,7 +38,7 @@ export default function Taskbar() {
       />
 
       {/* quick launch */}
-      <div className="flex justify-center p-2 space-x-5 items-center ml-28">
+      <div className="flex justify-center p-2 space-x-4 items-center ml-28">
         <Image
           src="/../public/home.png"
           width={30}
@@ -80,7 +80,7 @@ export default function Taskbar() {
       </div>
 
       {/* system tray*/}
-      <div className="flex items-center">
+      <div className="flex items-center p-2">
         <Button.Group>
           <IconButton
             src="arrow.png"
@@ -91,7 +91,7 @@ export default function Taskbar() {
             height={45}
           />
 
-          <MultiIconButton
+         <MultiIconButton
             src1="wifi.png"
             alt1="microsoft wifi icon"
             src2="audio3.png"
@@ -100,7 +100,7 @@ export default function Taskbar() {
             alt3="microsoft battery icon"
             width={33}
             height={33}
-          />
+          /> 
         </Button.Group>
         <DateAndTime />
       </div>

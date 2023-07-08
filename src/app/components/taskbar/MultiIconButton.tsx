@@ -14,7 +14,7 @@ type Props = {
 
 export default function MultiIconButton(props: Props) {
   return (
-    <Button compact variant="light" className="h-full">
+    <Button variant="light" className="h-full">
       <Image
         src={`/../public/${props.src1}`}
         width={props.width}

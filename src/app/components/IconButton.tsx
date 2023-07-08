@@ -15,10 +15,8 @@ type Props = {
 export default function IconButton(props: Props) {
   return (
     <Button
-      compact
       variant="light"
       className={`${props.buttonCss}`}
-      onPointerEnter={() => props.onHover}
       onClick={props.onClicked}
     >
       <Image
