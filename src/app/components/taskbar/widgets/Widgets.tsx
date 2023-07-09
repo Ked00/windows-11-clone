@@ -60,7 +60,7 @@ export default function Widgets(props: Props) {
                 long={props.long}
               />
 
-              <Grid item xs={5.5} className="ml-3 mb-2">
+              <Grid item xs={6} className="mb-3">
                 <NewsCard
                   title={props.newsData?.articles[0].title}
                   image={props.newsData?.articles[0].urlToImage}
@@ -76,7 +76,7 @@ export default function Widgets(props: Props) {
 
               <TrafficWidget lat={props.lat} long={props.long} />
 
-              <Grid item xs={5.5} className="ml-3 mb-3">
+              <Grid item xs={6} className="mb-3">
                 <NewsCard
                   title={props.newsData?.articles[2].title}
                   image={props.newsData?.articles[2].urlToImage}
@@ -91,7 +91,7 @@ export default function Widgets(props: Props) {
               </Grid>
 
               <SportsWidget />
-              <Grid item xs={5.7} className=" h-[350px]">
+              <Grid item xs={6} className="">
                 <Card className="h-full relative">
                   <Paper>
                     <h5>Kenner</h5>
