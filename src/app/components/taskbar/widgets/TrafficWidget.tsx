@@ -4,6 +4,7 @@ import MoreHoriz from "@mui/icons-material/MoreHoriz";
 import tt from "@tomtom-international/web-sdk-maps";
 import "@tomtom-international/web-sdk-maps/dist/maps.css";
 import {useEffect, useRef, useState} from "react"
+import "../../../../../styles/globals.css";
 
 type Props = {
   lat: number;
@@ -27,7 +28,7 @@ export default function TrafficWidget(props: Props) {
   }, []);
 
   return (
-    <Grid item xs={6} className="h-[350px] mb-3">
+    <Grid item xs={6} className="gridSize mb-3">
       <Card className="h-full relative">
         <Paper className="h-full p-3">
           <div className="flex justify-between">

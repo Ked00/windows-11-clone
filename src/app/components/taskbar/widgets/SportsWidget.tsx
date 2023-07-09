@@ -5,9 +5,9 @@ import MoreHoriz from "@mui/icons-material/MoreHoriz";
 
 export default function SportsWidget() {
   return (
-    <Grid item xs={6} className=" h-[370px] mr-2">
+    <Grid item xs={6} className="gridSize mr-2">
       <Card className="h-full relative">
-        <Paper className="p-2">
+        <Paper className="p-2 h-full">
           <div className="p-2 flex justify-between ">
             <div className="w-2/4 flex">
               <Image src="/../public/mlb.png" width={25} height={10} alt="mlb logo" className="" />
@@ -16,6 +16,7 @@ export default function SportsWidget() {
             <MoreHoriz />
           </div>
           <p className="p-1">Recently selected</p>
+          
           <GameCard
             awayTeamName="marlins"
             homeTeamName="marlins"

@@ -3,6 +3,7 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 import MoreHoriz from "@mui/icons-material/MoreHoriz";
 import Image from "next/image";
 import InteractiveMap from "./InteractiveMap";
+import "../../../../../styles/globals.css";
 
 type Props = {
   weatherData: Response | undefined;
@@ -13,7 +14,7 @@ type Props = {
 
 export default function Weather(props: Props) {
   return (
-    <Grid item xs={6} className="h-[350px] mb-3">
+    <Grid item xs={6} className="gridSize mb-3">
       <Card className="h-full relative">
         <Paper className="h-full p-3">
           <div className="flex justify-between">

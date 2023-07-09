@@ -49,63 +49,65 @@ export default function Widgets(props: Props) {
         PaperProps={style}
         hideBackdrop={true}
       >
-        <div className=" w-3/4 ml-24">
-          <h1 className="text-center my-4">{current.time}</h1>
-          <Grid container>
-            <Weather
-              weatherData={props.weatherData}
-              temp={props.temp}
-              lat={props.lat}
-              long={props.long}
-            />
-
-            <Grid item xs={5.5} className="ml-3 mb-2">
-              <NewsCard
-                title={props.newsData?.articles[0].title}
-                image={props.newsData?.articles[0].urlToImage}
-                name={props.newsData?.articles[0].source.name}
-                marginBottom={true}
+        <div className="flex justify-center">
+          <div className="w-3/4">
+            <h1 className="text-center my-4">{current.time}</h1>
+            <Grid container>
+              <Weather
+                weatherData={props.weatherData}
+                temp={props.temp}
+                lat={props.lat}
+                long={props.long}
               />
-              <NewsCard
-                title={props.newsData?.articles[1]?.title}
-                image={props.newsData?.articles[1]!.urlToImage}
-                name={props.newsData?.articles[1]!.source.name}
-              />
-            </Grid>
 
-            <TrafficWidget lat={props.lat} long={props.long} />
+              <Grid item xs={5.5} className="ml-3 mb-2">
+                <NewsCard
+                  title={props.newsData?.articles[0].title}
+                  image={props.newsData?.articles[0].urlToImage}
+                  name={props.newsData?.articles[0].source.name}
+                  marginBottom={true}
+                />
+                <NewsCard
+                  title={props.newsData?.articles[1]?.title}
+                  image={props.newsData?.articles[1]!.urlToImage}
+                  name={props.newsData?.articles[1]!.source.name}
+                />
+              </Grid>
 
-            <Grid item xs={5.5} className="ml-3 mb-3">
-              <NewsCard
-                title={props.newsData?.articles[2].title}
-                image={props.newsData?.articles[2].urlToImage}
-                name={props.newsData?.articles[2].source.name}
-                marginBottom={true}
-              />
-              <NewsCard
-                title={props.newsData?.articles[3]!.title}
-                image={props.newsData?.articles[3]!.urlToImage}
-                name={props.newsData?.articles[3]!.source.name}
-              />
-            </Grid>
+              <TrafficWidget lat={props.lat} long={props.long} />
 
-            <SportsWidget />
-            <Grid item xs={5.7} className=" h-[350px]">
-              <Card className="h-full relative">
-                <Paper>
-                  <h5>Kenner</h5>
-                </Paper>
-              </Card>
-            </Grid>
+              <Grid item xs={5.5} className="ml-3 mb-3">
+                <NewsCard
+                  title={props.newsData?.articles[2].title}
+                  image={props.newsData?.articles[2].urlToImage}
+                  name={props.newsData?.articles[2].source.name}
+                  marginBottom={true}
+                />
+                <NewsCard
+                  title={props.newsData?.articles[3]!.title}
+                  image={props.newsData?.articles[3]!.urlToImage}
+                  name={props.newsData?.articles[3]!.source.name}
+                />
+              </Grid>
 
-            <Grid item xs={17} className="h-[175px]">
-              <Card className="h-full relative mt-3">
-                <Paper>
-                  <h5>Kenner</h5>
-                </Paper>
-              </Card>
+              <SportsWidget />
+              <Grid item xs={5.7} className=" h-[350px]">
+                <Card className="h-full relative">
+                  <Paper>
+                    <h5>Kenner</h5>
+                  </Paper>
+                </Card>
+              </Grid>
+
+              <Grid item xs={17} className="h-[175px]">
+                <Card className="h-full relative mt-3">
+                  <Paper>
+                    <h5>Kenner</h5>
+                  </Paper>
+                </Card>
+              </Grid>
             </Grid>
-          </Grid>
+          </div>
         </div>
       </Drawer>
     </>
