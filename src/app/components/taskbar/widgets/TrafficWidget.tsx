@@ -30,7 +30,7 @@ export default function TrafficWidget(props: Props) {
   return (
     <Grid item xs={6} className="gridSize mb-3">
       <Card className="h-full relative">
-        <Paper className="h-full p-3">
+        <Paper className="h-full p-3 bg-gradient-to-r from-[#ecf6f0] to-[#e3eee7]">
           <div className="flex justify-between">
             <div className="flex">
               <Image
@@ -39,7 +39,7 @@ export default function TrafficWidget(props: Props) {
                 width={25}
                 alt="windows 11 traffic light"
               />
-              <h5>Traffic Cameras</h5>
+              <span>Traffic Cameras</span>
             </div>
             <MoreHoriz />
           </div>

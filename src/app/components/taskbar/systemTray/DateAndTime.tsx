@@ -1,7 +1,8 @@
 import useDateAndTime from "@/app/hooks/dateAndTime";
+import {useEffect} from "react";
 
 export default function DateAndTime() {
-  const current = useDateAndTime()
+  const current = useDateAndTime();
 
   return (
     <div className="text-black flex flex-col">

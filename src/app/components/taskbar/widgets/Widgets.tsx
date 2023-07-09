@@ -8,7 +8,6 @@ import {newsResponse} from "@/app/business-logic/api/api-types/newsResponse";
 import TrafficWidget from "./TrafficWidget";
 import SportsWidget from "./SportsWidget";
 import useDateAndTime from "@/app/hooks/dateAndTime";
-import {useEffect} from "react";
 
 type Props = {
   weatherData: Response | undefined;
@@ -47,7 +46,7 @@ export default function Widgets(props: Props) {
         open={showing.isShowing}
         onClose={showing.reverseState}
         PaperProps={style}
-        hideBackdrop={true}
+        hideBackdrop={false}
       >
         <div className="flex justify-center">
           <div className="w-3/4">
@@ -66,11 +65,13 @@ export default function Widgets(props: Props) {
                   image={props.newsData?.articles[0].urlToImage}
                   name={props.newsData?.articles[0].source.name}
                   marginBottom={true}
+                  classname=" bg-gradient-to-r from-[#d5f0cb] from-40% to-[#e7ebc4]"
                 />
                 <NewsCard
                   title={props.newsData?.articles[1]?.title}
                   image={props.newsData?.articles[1]!.urlToImage}
                   name={props.newsData?.articles[1]!.source.name}
+                  classname=" bg-gradient-to-r from-[#dad7d7] from-40% to-[#b3b2b2]"
                 />
               </Grid>
 
@@ -82,11 +83,13 @@ export default function Widgets(props: Props) {
                   image={props.newsData?.articles[2].urlToImage}
                   name={props.newsData?.articles[2].source.name}
                   marginBottom={true}
+                  classname=" bg-gradient-to-r from-[#e0eaef] from-40% to-[#d0edec]"
                 />
                 <NewsCard
                   title={props.newsData?.articles[3]!.title}
                   image={props.newsData?.articles[3]!.urlToImage}
                   name={props.newsData?.articles[3]!.source.name}
+                  classname=" bg-gradient-to-r from-[#ece9c2] from-40% to-[#eee4da]"
                 />
               </Grid>
 
@@ -99,11 +102,9 @@ export default function Widgets(props: Props) {
                 </Card>
               </Grid>
 
-              <Grid item xs={17} className="h-[175px]">
+              <Grid item xs={17} className="h-[300px] mb-2">
                 <Card className="h-full relative mt-3">
-                  <Paper>
-                    <h5>Kenner</h5>
-                  </Paper>
+                  <Paper className="h-full"></Paper>
                 </Card>
               </Grid>
             </Grid>
