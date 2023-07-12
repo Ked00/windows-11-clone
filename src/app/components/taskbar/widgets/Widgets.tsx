@@ -1,6 +1,6 @@
 import {useIsShowing} from "@/app/hooks/isShowing";
 import IconButton from "../../IconButton";
-import {Drawer, Grid, Paper, CardMedia} from "@mui/material";
+import {Drawer, Grid} from "@mui/material";
 import Weather from "./Weather";
 import {Response} from "../../../business-logic/api/api-types/weatherResponse";
 import NewsCard from "./NewsCard";
@@ -8,7 +8,8 @@ import {newsResponse} from "@/app/business-logic/api/api-types/newsResponse";
 import TrafficWidget from "./TrafficWidget";
 import SportsWidget from "./SportsWidget";
 import useDateAndTime from "@/app/hooks/dateAndTime";
-import {Card, Image} from "react-bootstrap";
+import FullSizeNewsCard from "./FullSizeNewsCard";
+import WideNewsCard from "./WideNewsCard";
 
 type Props = {
   weatherData: Response | undefined;
@@ -93,34 +94,17 @@ export default function Widgets(props: Props) {
                   classname=" bg-gradient-to-r from-[#ece9c2] from-40% to-[#eee4da]"
                 />
               </Grid>
-
               <SportsWidget />
-              <Grid item xs={6}>
-                <Card className="h-[365px] bg-[#e0eaef]">
-                  <Card.Img
-                    src={`${props.newsData?.articles[5]!.urlToImage}`}
-                    alt="desktop pic"
-                    className="h-48"
-                  />
-                  <div className="flex p-3">
-                    <Image
-                      src={`${props.newsData?.articles[5]!.urlToImage}`}
-                      alt="news"
-                      className="w-[30px]"
-                    />
-                    <span className="mx-2">{props.newsData?.articles[5]!.source.name}</span>
-                  </div>
-                  <Card.Body>
-                    <h5>{props.newsData?.articles[5]!.title}</h5>
-                  </Card.Body>
-                </Card>
-              </Grid>
-
-              <Grid item xs={17} className="h-[300px] mb-2">
-                <Card className="h-full relative mt-3">
-                  <Paper className="h-full"></Paper>
-                </Card>
-              </Grid>
+              <FullSizeNewsCard
+                title={props.newsData?.articles[5].title}
+                image={props.newsData?.articles[5].urlToImage}
+                name={props.newsData?.articles[5].source.name}
+              />
+              <WideNewsCard
+                title={props.newsData?.articles[7].title}
+                image={props.newsData?.articles[7].urlToImage}
+                name={props.newsData?.articles[7].source.name}
+              />
             </Grid>
           </div>
         </div>
