@@ -20,7 +20,6 @@ export default function NewsCard(props: Props) {
           height="1px"
           width="30px"
           alt="weather widget"
-          className="rounded-full"
         />
         <span className="mx-2">{props.name}</span>
       </div>

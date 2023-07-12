@@ -1,6 +1,6 @@
 import {useIsShowing} from "@/app/hooks/isShowing";
 import IconButton from "../../IconButton";
-import {Drawer, Grid, Card, Paper} from "@mui/material";
+import {Drawer, Grid, Paper, CardMedia} from "@mui/material";
 import Weather from "./Weather";
 import {Response} from "../../../business-logic/api/api-types/weatherResponse";
 import NewsCard from "./NewsCard";
@@ -8,6 +8,7 @@ import {newsResponse} from "@/app/business-logic/api/api-types/newsResponse";
 import TrafficWidget from "./TrafficWidget";
 import SportsWidget from "./SportsWidget";
 import useDateAndTime from "@/app/hooks/dateAndTime";
+import {Card, Image} from "react-bootstrap";
 
 type Props = {
   weatherData: Response | undefined;
@@ -51,7 +52,7 @@ export default function Widgets(props: Props) {
         <div className="flex justify-center">
           <div className="w-3/4">
             <h1 className="text-center my-4">{current.time}</h1>
-            <Grid container>
+            <Grid container spacing={1}>
               <Weather
                 weatherData={props.weatherData}
                 temp={props.temp}
@@ -94,11 +95,24 @@ export default function Widgets(props: Props) {
               </Grid>
 
               <SportsWidget />
-              <Grid item xs={6} className="">
-                <Card className="h-full relative">
-                  <Paper>
-                    <h5>Kenner</h5>
-                  </Paper>
+              <Grid item xs={6}>
+                <Card className="h-[365px] bg-[#e0eaef]">
+                  <Card.Img
+                    src={`${props.newsData?.articles[5]!.urlToImage}`}
+                    alt="desktop pic"
+                    className="h-48"
+                  />
+                  <div className="flex p-3">
+                    <Image
+                      src={`${props.newsData?.articles[5]!.urlToImage}`}
+                      alt="news"
+                      className="w-[30px]"
+                    />
+                    <span className="mx-2">{props.newsData?.articles[5]!.source.name}</span>
+                  </div>
+                  <Card.Body>
+                    <h5>{props.newsData?.articles[5]!.title}</h5>
+                  </Card.Body>
                 </Card>
               </Grid>
 

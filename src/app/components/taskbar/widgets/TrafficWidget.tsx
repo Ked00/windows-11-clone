@@ -13,7 +13,7 @@ type Props = {
 
 export default function TrafficWidget(props: Props) {
   const [map, setMap] = useState({});
-  const mapElement = useRef();
+  const mapElement = useRef(undefined);
 
   useEffect(() => {
     const map = tt.map({
