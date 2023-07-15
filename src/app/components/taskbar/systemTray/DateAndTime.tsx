@@ -1,8 +1,13 @@
-export default function DateAndTime(){
-    return(
-        <div className="p-2 text-black">
-          <p className="text-xs">3:08 PM</p>
-          <p className="text-xs">6/25/23</p>
-        </div>
-    )
+import useDateAndTime from "@/app/hooks/dateAndTime";
+import {useEffect} from "react";
+
+export default function DateAndTime() {
+  const current = useDateAndTime();
+
+  return (
+    <div className="text-black flex flex-col">
+      <span className="text-xs">{current.time}</span>
+      <span className="text-xs">{current.today}</span>
+    </div>
+  );
 }

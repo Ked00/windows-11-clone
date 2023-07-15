@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
 import Taskbar from "./components/Taskbar";
-import WidgetDrawer from "./components/taskbar/widgets/WidgetDrawer";
-
+import {useEffect, useState} from "react";
+import axios from "axios";
 // hooks
 import {useIsShowing} from "../app/hooks/isShowing";
 
@@ -14,11 +14,12 @@ export default function Home() {
         fill={true}
         quality={100}
         alt="windows 11 desktop image"
+        priority={true}
       />
 
       {/* taskbar */}
-      <Taskbar/>
-      <WidgetDrawer />
+      
+      <Taskbar />
     </div>
   );
 }
