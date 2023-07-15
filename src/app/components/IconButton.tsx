@@ -4,6 +4,7 @@ import Image from "next/image";
 type Props = {
   alt: string;
   src: string;
+  variant: string;
   buttonCss?: string;
   iconCSs?: string;
   height: number;
@@ -14,11 +15,7 @@ type Props = {
 
 export default function IconButton(props: Props) {
   return (
-    <Button
-      variant="light"
-      className={`${props.buttonCss}`}
-      onClick={props.onClicked}
-    >
+    <Button variant={props.variant} className={`${props.buttonCss}`} onClick={props.onClicked} >
       <Image
         src={`/../public/${props.src}`}
         width={props.width}

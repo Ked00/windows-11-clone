@@ -11,6 +11,7 @@ import useWeatherInfo from "../business-logic/api/api-calls/weatherInfo";
 import useNewsInfo from "../business-logic/api/api-calls/newsInfo";
 import useLiveMlbGamesInfo from "../business-logic/api/api-calls/liveMlbGamesInfo";
 import useScheduledMatchesInfo from "../business-logic/api/api-calls/schedulesMatchinfo";
+import FileSystem from "./taskbar/fileSystem/FileSystem";
 
 export default function Taskbar() {
   const weatherInfo = useWeatherInfo();
@@ -56,13 +57,7 @@ export default function Taskbar() {
           quality={100}
           alt="microsoft edge icon"
         />
-        <Image
-          src="/../public/folder.ico"
-          width={30}
-          height={30}
-          quality={100}
-          alt="microsoft folder icon"
-        />
+        <FileSystem />
         <Image
           src="/../public/store.png"
           width={30}
@@ -85,6 +80,7 @@ export default function Taskbar() {
           <IconButton
             src="arrow.png"
             alt="microsoft expand icon"
+            variant="text"
             iconCSs="p-3"
             buttonCss="h-full"
             width={45}

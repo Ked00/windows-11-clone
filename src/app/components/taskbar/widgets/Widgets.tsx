@@ -38,6 +38,7 @@ export default function Widgets(props: Props) {
       <IconButton
         src="weather.png"
         alt="weather icon"
+        variant="light"
         buttonCss="h-full"
         width={40}
         height={40}
@@ -60,7 +61,6 @@ export default function Widgets(props: Props) {
                 lat={props.lat}
                 long={props.long}
               />
-
               <Grid item xs={6} className="mb-3">
                 <NewsCard
                   title={props.newsData?.articles[0].title}
@@ -76,9 +76,7 @@ export default function Widgets(props: Props) {
                   classname=" bg-gradient-to-r from-[#dad7d7] from-40% to-[#b3b2b2]"
                 />
               </Grid>
-
               <TrafficWidget lat={props.lat} long={props.long} />
-
               <Grid item xs={6} className="mb-3">
                 <NewsCard
                   title={props.newsData?.articles[2].title}
