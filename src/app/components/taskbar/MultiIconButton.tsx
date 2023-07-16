@@ -16,7 +16,7 @@ export default function MultiIconButton(props: Props) {
   return (
     <Button variant="text" className="h-full">
       <Image
-        src={`/../public/${props.src1}`}
+        src={`/../public/images/${props.src1}`}
         width={props.width}
         height={props.height}
         quality={100}
@@ -24,7 +24,7 @@ export default function MultiIconButton(props: Props) {
         className="p-2"
       />
       <Image
-        src={`/../public/${props.src2}`}
+        src={`/../public/images/${props.src2}`}
         width={props.width}
         height={props.height}
         quality={100}
@@ -32,7 +32,7 @@ export default function MultiIconButton(props: Props) {
         className="p-2"
       />
       <Image
-        src={`/../public/${props.src3}`}
+        src={`/../public/images/${props.src3}`}
         width={props.width}
         height={props.height}
         quality={100}

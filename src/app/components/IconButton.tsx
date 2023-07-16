@@ -17,7 +17,7 @@ export default function IconButton(props: Props) {
   return (
     <Button variant={props.variant} className={`${props.buttonCss}`} onClick={props.onClicked} >
       <Image
-        src={`/../public/${props.src}`}
+        src={`/../public/images/${props.src}`}
         width={props.width}
         height={props.height}
         quality={100}

@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div className="static w-full h-3/4">
       <Image
-        src="/../public/desktop-image.jpeg"
+        src="/../public/images/desktop-image.jpeg"
         fill={true}
         quality={100}
         alt="windows 11 desktop image"

@@ -41,7 +41,7 @@ export default function Taskbar() {
       {/* quick launch */}
       <div className="flex justify-center p-2 space-x-4 items-center ml-28">
         <Image
-          src="/../public/home.png"
+          src="/../public/images/home.png"
           width={30}
           height={30}
           quality={100}
@@ -51,7 +51,7 @@ export default function Taskbar() {
         <TextInput placeholder="Search" variant="filled" radius="xl" size="xs" />
 
         <Image
-          src="/../public/edge.png"
+          src="/../public/images/edge.png"
           width={30}
           height={30}
           quality={100}
@@ -59,14 +59,14 @@ export default function Taskbar() {
         />
         <FileSystem />
         <Image
-          src="/../public/store.png"
+          src="/../public/images/store.png"
           width={30}
           height={30}
           quality={100}
           alt="microsoft store icon"
         />
         <Image
-          src="/../public/mail.png"
+          src="/../public/images/mail.png"
           width={30}
           height={30}
           quality={100}

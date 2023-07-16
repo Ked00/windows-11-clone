@@ -10,7 +10,7 @@ export default function SportsWidget() {
         <Paper className="p-2 h-full bg-gradient-to-tl from-[#cddfff] from-40% to-[#f0e1f7]">
           <div className="p-2 flex justify-between">
             <div className="w-2/4 flex">
-              <Image src="/../public/mlb.png" width={25} height={10} alt="mlb logo" className="" />
+              <Image src="/../public/images/mlb.png" width={25} height={10} alt="mlb logo" className="" />
               <span className="mx-3">MLB</span>
             </div>
             <MoreHoriz />

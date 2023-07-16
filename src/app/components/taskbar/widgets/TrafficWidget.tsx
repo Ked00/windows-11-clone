@@ -34,7 +34,7 @@ export default function TrafficWidget(props: Props) {
           <div className="flex justify-between">
             <div className="flex">
               <Image
-                src="/../public/trafficLight.png"
+                src="/../public/images/trafficLight.png"
                 height={1}
                 width={25}
                 alt="windows 11 traffic light"

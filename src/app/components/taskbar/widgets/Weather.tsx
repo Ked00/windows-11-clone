@@ -27,7 +27,7 @@ export default function Weather(props: Props) {
 
           <div className="flex items-center">
             <Image
-              src="/../public/weather.png"
+              src="/../public/images/weather.png"
               height={30}
               width={70}
               alt="weather widget"
