@@ -13,7 +13,7 @@ export default function UpOneLevelButton() {
         data-flip="false"
         data-invert="false"
         data-rounded="false"
-        style={{width: "14px", height: "14px"}}
+        style={{width: "17px", height: "17px"}}
       >
         <path
           fill="currentColor"

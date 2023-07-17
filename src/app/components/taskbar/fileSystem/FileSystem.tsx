@@ -2,14 +2,25 @@ import IconButton from "../../IconButton";
 import {Modal, Button} from "react-bootstrap";
 import {useIsShowing} from "@/app/hooks/isShowing";
 import Image from "next/image";
-import {ButtonGroup, Divider} from "@mui/material";
+import {ButtonGroup, Divider, Breadcrumbs, Link, TextField, InputAdornment} from "@mui/material";
 import BackButtonIcon from "../../../../../public/svgIcons/backbuttonIcon";
 import ForwardButtonIcon from "../../../../../public/svgIcons/forwardbuttonIcon";
 import RecentLocations from "../../../../../public/svgIcons/RecentLocations";
 import UpOneLevelButton from "../../../../../public/svgIcons/upOneLevelButton";
+import {SearchSharp} from "@mui/icons-material/";
 
 export default function FileSystem() {
   const isShowing = useIsShowing(false);
+  const crumbs = ["Google", "Apple", "Netflix"];
+
+  const mapCrumbs = crumbs.map((item) => {
+    return (
+      <Link variant="caption" className="text-black" underline="none" >
+        {item}
+      </Link>
+    );
+  });
+
   return (
     <>
       <IconButton
@@ -31,13 +42,23 @@ export default function FileSystem() {
         <Modal.Header className="flex flex-col p-2 bg-[#eff4f9]">
           <div className="flex justify-between w-full">
             <div className="flex items-center">
-              <Image width={20} height={20} alt="windows 11 icon" src="/../public/images/folder.ico" />
+              <Image
+                width={20}
+                height={20}
+                alt="windows 11 icon"
+                src="/../public/images/folder.ico"
+              />
               <p className="ml-1">File Explorer</p>
             </div>
 
             <ButtonGroup size="small">
               <Button className="border-none">
-                <Image width={15} height={15} alt="windows 11 icon" src="/../public/images/minimize.png" />
+                <Image
+                  width={15}
+                  height={15}
+                  alt="windows 11 icon"
+                  src="/../public/images/minimize.png"
+                />
               </Button>
               <Button className="border-none">
                 <Image
@@ -48,7 +69,12 @@ export default function FileSystem() {
                 />
               </Button>
               <Button className="border-none">
-                <Image width={15} height={15} alt="windows 11 icon" src="/../public/images/close.png" />
+                <Image
+                  width={15}
+                  height={15}
+                  alt="windows 11 icon"
+                  src="/../public/images/close.png"
+                />
               </Button>
             </ButtonGroup>
           </div>
@@ -65,19 +91,44 @@ export default function FileSystem() {
 
             <ButtonGroup variant="text">
               <Button className="flex items-center border-none text-black">
-                <Image width={19} height={19} alt="windows 11 icon" src="/../public/images/cut.png" />
+                <Image
+                  width={19}
+                  height={19}
+                  alt="windows 11 icon"
+                  src="/../public/images/cut.png"
+                />
               </Button>
               <Button className="flex items-center border-none text-black">
-                <Image width={19} height={19} alt="windows 11 icon" src="/../public/images/copy.png" />
+                <Image
+                  width={19}
+                  height={19}
+                  alt="windows 11 icon"
+                  src="/../public/images/copy.png"
+                />
               </Button>
               <Button className="flex items-center border-none text-black">
-                <Image width={19} height={19} alt="windows 11 icon" src="/../public/images/paste.png" />
+                <Image
+                  width={19}
+                  height={19}
+                  alt="windows 11 icon"
+                  src="/../public/images/paste.png"
+                />
               </Button>
               <Button className="flex items-center border-none text-black">
-                <Image width={19} height={19} alt="windows 11 icon" src="/../public/images/rename.png" />
+                <Image
+                  width={19}
+                  height={19}
+                  alt="windows 11 icon"
+                  src="/../public/images/rename.png"
+                />
               </Button>
               <Button className="flex items-center border-none text-black">
-                <Image width={19} height={19} alt="windows 11 icon" src="/../public/images/share.png" />
+                <Image
+                  width={19}
+                  height={19}
+                  alt="windows 11 icon"
+                  src="/../public/images/share.png"
+                />
               </Button>
             </ButtonGroup>
 
@@ -87,26 +138,55 @@ export default function FileSystem() {
 
             <ButtonGroup variant="text">
               <Button className="flex items-center border-none text-black">
-                <Image width={19} height={19} alt="windows 11 icon" src="/../public/images/sort.png" />
+                <Image
+                  width={19}
+                  height={19}
+                  alt="windows 11 icon"
+                  src="/../public/images/sort.png"
+                />
                 <span className="ml-1">Sort</span>
               </Button>
               <Button className="flex items-center border-none text-black">
-                <Image width={19} height={19} alt="windows 11 icon" src="/../public/images/view.png" />
+                <Image
+                  width={19}
+                  height={19}
+                  alt="windows 11 icon"
+                  src="/../public/images/view.png"
+                />
                 <span className="ml-1">View</span>
               </Button>
             </ButtonGroup>
           </div>
         </Modal.Header>
         <Modal.Body>
-          <div className="flex">
+          <div className="flex items-center">
             <BackButtonIcon />
             <ForwardButtonIcon />
-            <RecentLocations />
             <UpOneLevelButton />
-
-            {/* <div className="border-4 border-red-400 w-2/4 p-2">
-            <Image width={19} height={19} alt="windows 11 icon" src="/../public/images/user-sm.png" />
-            </div> */}
+            <div className="border-1 border-[#bbb] w-3/4 p-2 flex">
+              <Breadcrumbs separator="›">
+                <Image
+                  width={19}
+                  height={19}
+                  alt="windows 11 icon"
+                  src="/../public/images/user-sm.png"
+                />
+                {mapCrumbs}
+              </Breadcrumbs>
+            </div>
+            <TextField
+              placeholder="Search"
+              variant="outlined"
+              className="mx-2 p-2"
+              size="small"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchSharp />
+                  </InputAdornment>
+                ),
+              }}
+            />
           </div>
         </Modal.Body>
       </Modal>
