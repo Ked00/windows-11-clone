@@ -2,12 +2,25 @@ import IconButton from "../../IconButton";
 import {Modal, Button} from "react-bootstrap";
 import {useIsShowing} from "@/app/hooks/isShowing";
 import Image from "next/image";
-import {ButtonGroup, Divider, Breadcrumbs, Link, TextField, InputAdornment} from "@mui/material";
+import {
+  ButtonGroup,
+  Divider,
+  Breadcrumbs,
+  Link,
+  TextField,
+  InputAdornment,
+  Grid,
+  Accordion,
+  AccordionSummary,
+  Typography,
+  AccordionDetails,
+} from "@mui/material";
 import BackButtonIcon from "../../../../../public/svgIcons/backbuttonIcon";
 import ForwardButtonIcon from "../../../../../public/svgIcons/forwardbuttonIcon";
 import RecentLocations from "../../../../../public/svgIcons/RecentLocations";
 import UpOneLevelButton from "../../../../../public/svgIcons/upOneLevelButton";
-import {SearchSharp} from "@mui/icons-material/";
+import {SearchSharp, ArrowForwardIosSharp} from "@mui/icons-material/";
+import WindowControl from "../../application-window/WindowControl";
 
 export default function FileSystem() {
   const isShowing = useIsShowing(false);
@@ -15,7 +28,7 @@ export default function FileSystem() {
 
   const mapCrumbs = crumbs.map((item) => {
     return (
-      <Link variant="caption" className="text-black" underline="none" >
+      <Link variant="caption" className="text-black" underline="none">
         {item}
       </Link>
     );
@@ -43,40 +56,14 @@ export default function FileSystem() {
           <div className="flex justify-between w-full">
             <div className="flex items-center">
               <Image
-                width={20}
-                height={20}
+                width={15}
+                height={15}
                 alt="windows 11 icon"
                 src="/../public/images/folder.ico"
               />
-              <p className="ml-1">File Explorer</p>
+              <p className="ml-1 text-sm">File Explorer</p>
             </div>
-
-            <ButtonGroup size="small">
-              <Button className="border-none">
-                <Image
-                  width={15}
-                  height={15}
-                  alt="windows 11 icon"
-                  src="/../public/images/minimize.png"
-                />
-              </Button>
-              <Button className="border-none">
-                <Image
-                  width={15}
-                  height={15}
-                  alt="windows 11 icon"
-                  src="/../public/images/restoreDown.png"
-                />
-              </Button>
-              <Button className="border-none">
-                <Image
-                  width={15}
-                  height={15}
-                  alt="windows 11 icon"
-                  src="/../public/images/close.png"
-                />
-              </Button>
-            </ButtonGroup>
+            <WindowControl />
           </div>
 
           <div className="w-full flex mt-4">
@@ -158,6 +145,7 @@ export default function FileSystem() {
             </ButtonGroup>
           </div>
         </Modal.Header>
+
         <Modal.Body>
           <div className="flex items-center">
             <BackButtonIcon />
@@ -188,6 +176,79 @@ export default function FileSystem() {
               }}
             />
           </div>
+          <Grid container>
+            <Grid item xs={3}>
+              <Accordion className="border-none" disableGutters={true}>
+                <AccordionSummary expandIcon={<ArrowForwardIosSharp />}>
+                  <Typography className="flex">
+                    <Image
+                      src="/../public/images/star-sm.png"
+                      width={16}
+                      height={0}
+                      alt="quick access star"
+                    />
+                    <p className="text-sm mx-2">Quick access</p>
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography className="flex flex-col">
+                    <Link className="text-black flex" underline="none">
+                      <Image
+                        src="/../public/images/down-sm.png"
+                        alt="windows 11 download icon"
+                        width={16}
+                        height={0}
+                      />
+                      <p className="text-sm mx-1"> Downloads</p>
+                    </Link>
+                    <Link className="text-black flex" underline="none">
+                      <Image
+                        src="/../public/images/docs-sm.png"
+                        alt="windows 11 documents icon"
+                        width={16}
+                        height={0}
+                      />
+                      <p className="text-sm mx-1">Documents</p>
+                    </Link>
+                    <Link className="text-black flex" underline="none">
+                      <Image
+                        src="/../public/images/pics-sm.png"
+                        alt="windows 11 pictures icon"
+                        width={16}
+                        height={0}
+                      />
+                      <p className="text-sm mx-1">Pictures</p>
+                    </Link>
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+
+              <Accordion>
+                <AccordionSummary>
+                  <Image
+                    src="/../public/images/onedrive-sm.png"
+                    width={16}
+                    height={0}
+                    alt="quick access star"
+                  />
+                  <p className="text-sm mx-2">OneDrive</p>
+                </AccordionSummary>
+              </Accordion>
+
+              <Accordion>
+                <AccordionSummary>
+                  <Image
+                    src="/../public/images/thispc-sm.png"
+                    width={16}
+                    height={0}
+                    alt="quick access star"
+                  />
+                  <p className="text-sm mx-2">This PC</p>
+                </AccordionSummary>
+              </Accordion>
+            </Grid>
+            <Grid item xs={8}></Grid>
+          </Grid>
         </Modal.Body>
       </Modal>
     </>
