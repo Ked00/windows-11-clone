@@ -10,17 +10,13 @@ import {
   TextField,
   InputAdornment,
   Grid,
-  Accordion,
-  AccordionSummary,
-  Typography,
-  AccordionDetails,
 } from "@mui/material";
 import BackButtonIcon from "../../../../../public/svgIcons/backbuttonIcon";
 import ForwardButtonIcon from "../../../../../public/svgIcons/forwardbuttonIcon";
-import RecentLocations from "../../../../../public/svgIcons/RecentLocations";
 import UpOneLevelButton from "../../../../../public/svgIcons/upOneLevelButton";
-import {SearchSharp, ArrowForwardIosSharp} from "@mui/icons-material/";
+import {SearchSharp} from "@mui/icons-material/";
 import WindowControl from "../../application-window/WindowControl";
+import OneDriveAccordion from "./OneDriveAccordion";
 
 export default function FileSystem() {
   const isShowing = useIsShowing(false);
@@ -177,75 +173,12 @@ export default function FileSystem() {
             />
           </div>
           <Grid container>
-            <Grid item xs={3}>
-              <Accordion className="border-none" disableGutters={true}>
-                <AccordionSummary expandIcon={<ArrowForwardIosSharp />}>
-                  <Typography className="flex">
-                    <Image
-                      src="/../public/images/star-sm.png"
-                      width={16}
-                      height={0}
-                      alt="quick access star"
-                    />
-                    <p className="text-sm mx-2">Quick access</p>
-                  </Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <Typography className="flex flex-col">
-                    <Link className="text-black flex" underline="none">
-                      <Image
-                        src="/../public/images/down-sm.png"
-                        alt="windows 11 download icon"
-                        width={16}
-                        height={0}
-                      />
-                      <p className="text-sm mx-1"> Downloads</p>
-                    </Link>
-                    <Link className="text-black flex" underline="none">
-                      <Image
-                        src="/../public/images/docs-sm.png"
-                        alt="windows 11 documents icon"
-                        width={16}
-                        height={0}
-                      />
-                      <p className="text-sm mx-1">Documents</p>
-                    </Link>
-                    <Link className="text-black flex" underline="none">
-                      <Image
-                        src="/../public/images/pics-sm.png"
-                        alt="windows 11 pictures icon"
-                        width={16}
-                        height={0}
-                      />
-                      <p className="text-sm mx-1">Pictures</p>
-                    </Link>
-                  </Typography>
-                </AccordionDetails>
-              </Accordion>
-
-              <Accordion>
-                <AccordionSummary>
-                  <Image
-                    src="/../public/images/onedrive-sm.png"
-                    width={16}
-                    height={0}
-                    alt="quick access star"
-                  />
-                  <p className="text-sm mx-2">OneDrive</p>
-                </AccordionSummary>
-              </Accordion>
-
-              <Accordion>
-                <AccordionSummary>
-                  <Image
-                    src="/../public/images/thispc-sm.png"
-                    width={16}
-                    height={0}
-                    alt="quick access star"
-                  />
-                  <p className="text-sm mx-2">This PC</p>
-                </AccordionSummary>
-              </Accordion>
+            <Grid item xs={2}>
+              <div className="flex">
+                <Image src="/../public/images/house.png" width={18} height={14} alt="house icon" />
+                <span className="ml-1 text-sm">Home</span>
+              </div>
+              <OneDriveAccordion />
             </Grid>
             <Grid item xs={8}></Grid>
           </Grid>
