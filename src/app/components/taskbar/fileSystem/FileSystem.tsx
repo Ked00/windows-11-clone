@@ -16,7 +16,8 @@ import ForwardButtonIcon from "../../../../../public/svgIcons/forwardbuttonIcon"
 import UpOneLevelButton from "../../../../../public/svgIcons/upOneLevelButton";
 import {SearchSharp} from "@mui/icons-material/";
 import WindowControl from "../../application-window/WindowControl";
-import OneDriveAccordion from "./OneDriveAccordion";
+import OneDriveAccordion from "./sidemenu/OneDriveAccordion";
+import Pinned from "./sidemenu/pinned";
 
 export default function FileSystem() {
   const isShowing = useIsShowing(false);
@@ -179,6 +180,7 @@ export default function FileSystem() {
                 <span className="ml-1 text-sm">Home</span>
               </div>
               <OneDriveAccordion />
+              <Pinned />
             </Grid>
             <Grid item xs={8}></Grid>
           </Grid>
