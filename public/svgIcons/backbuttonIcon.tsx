@@ -1,4 +1,7 @@
-export default function BackButtonIcon() {
+type Props = {
+};
+
+export default function BackButtonIcon(props: Props) {
   return (
     <svg
       aria-hidden="true"

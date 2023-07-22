@@ -17,15 +17,21 @@ import UpOneLevelButton from "../../../../../public/svgIcons/upOneLevelButton";
 import {SearchSharp} from "@mui/icons-material/";
 import WindowControl from "../../application-window/WindowControl";
 import OneDriveAccordion from "./sidemenu/OneDriveAccordion";
-import Pinned from "./sidemenu/pinned";
+import Pinned from "./sidemenu/Pinned";
+import {useEffect, useState} from "react";
 
 export default function FileSystem() {
   const isShowing = useIsShowing(false);
-  const crumbs = ["Google", "Apple", "Netflix"];
+  const [crumbs, setCrumbs] = useState<string[] | null>([
+    "google",
+    "apple",
+    "microsoft",
+    "netflix",
+  ]);
 
-  const mapCrumbs = crumbs.map((item) => {
+  const mapCrumbs = crumbs?.map((item) => {
     return (
-      <Link variant="caption" className="text-black" underline="none">
+      <Link variant="caption" className="text-black" underline="none" key={item}>
         {item}
       </Link>
     );
@@ -47,7 +53,7 @@ export default function FileSystem() {
         onHide={isShowing.reverseState}
         backdrop={false}
         show={isShowing.isShowing}
-        size="lg"
+        size="xl"
       >
         <Modal.Header className="flex flex-col p-2 bg-[#eff4f9]">
           <div className="flex justify-between w-full">
@@ -60,7 +66,7 @@ export default function FileSystem() {
               />
               <p className="ml-1 text-sm">File Explorer</p>
             </div>
-            <WindowControl />
+            <WindowControl close={isShowing.reverseState} />
           </div>
 
           <div className="w-full flex mt-4">
@@ -174,15 +180,14 @@ export default function FileSystem() {
             />
           </div>
           <Grid container>
-            <Grid item xs={2}>
-              <div className="flex">
+            <Grid item xs={2} className="border-r-8">
+              <div className="flex mb-2.5 hover:bg-[#e5f3ff]">
                 <Image src="/../public/images/house.png" width={18} height={14} alt="house icon" />
                 <span className="ml-1 text-sm">Home</span>
               </div>
               <OneDriveAccordion />
               <Pinned />
             </Grid>
-            <Grid item xs={8}></Grid>
           </Grid>
         </Modal.Body>
       </Modal>
