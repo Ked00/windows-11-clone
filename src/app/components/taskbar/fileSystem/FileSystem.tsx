@@ -14,20 +14,28 @@ import ActionButtons from "./ButtonGroups/ActionButtons";
 
 export default function FileSystem() {
   const isShowing = useIsShowing(false);
+  const [size, setSize] = useState<"xl" | true>("xl");
+  const [hidden, setHidden] = useState("visible");
   const [crumbs, setCrumbs] = useState<string[] | null>([
     "google",
     "apple",
     "microsoft",
     "netflix",
   ]);
-  const [size, setSize] = useState<"xl" | true>("xl");
-  
-  function changeSize(){
-    if(size == "xl"){
-      setSize(true)
+
+  function changeSize() {
+    if (size == "xl") {
+      setSize(true);
+    } else {
+      setSize("xl");
     }
-    else{
-      setSize("xl")
+  }
+
+  function hide() {
+    if (hidden == "invisible") {
+      setHidden("visible");
+    } else {
+      setHidden("invisible");
     }
   }
 
@@ -40,14 +48,17 @@ export default function FileSystem() {
         height={30}
         width={30}
         onClicked={isShowing.reverseState}
+        hide={hide}
       />
+
       <Modal
         animation={false}
         onHide={isShowing.reverseState}
         backdrop={false}
         show={isShowing.isShowing}
         size={size}
-        fullscreen={size} 
+        fullscreen={size}
+        className={hidden}
       >
         <Modal.Header className="flex flex-col p-2 bg-[#eff4f9]">
           <div className="flex justify-between w-full">
@@ -60,7 +71,7 @@ export default function FileSystem() {
               />
               <p className="ml-1 text-sm">File Explorer</p>
             </div>
-            <WindowControl close={isShowing.reverseState} minimize={changeSize}/>
+            <WindowControl close={isShowing.reverseState} minimize={changeSize} hide={hide} />
           </div>
 
           <div className="w-full flex mt-4">

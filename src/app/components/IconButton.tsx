@@ -11,11 +11,17 @@ type Props = {
   width: number;
   onClicked?: () => void;
   onHover?: () => void;
+  hide: () => void;
 };
 
 export default function IconButton(props: Props) {
   return (
-    <Button variant={props.variant} className={`${props.buttonCss}`} onClick={props.onClicked} >
+    <Button
+      variant={props.variant}
+      className={`${props.buttonCss}`}
+      onClick={props.onClicked}
+      onDoubleClick={props.hide}
+    >
       <Image
         src={`/../public/images/${props.src}`}
         width={props.width}
