@@ -1,24 +1,21 @@
 import IconButton from "../../IconButton";
-import {Modal, Button} from "react-bootstrap";
+import {Modal} from "react-bootstrap";
 import {useIsShowing} from "@/app/hooks/isShowing";
 import Image from "next/image";
-import {
-  ButtonGroup,
-  Divider,
-  Breadcrumbs,
-  Link,
-  TextField,
-  InputAdornment,
-  Grid,
-} from "@mui/material";
-import BackButtonIcon from "../../../../../public/svgIcons/backbuttonIcon";
+import {ButtonGroup, Divider, Grid} from "@mui/material";
+import BackButtonIcon from "./Navigation/Controls/backbuttonIcon";
 import ForwardButtonIcon from "../../../../../public/svgIcons/forwardbuttonIcon";
 import UpOneLevelButton from "../../../../../public/svgIcons/upOneLevelButton";
-import {SearchSharp} from "@mui/icons-material/";
 import WindowControl from "../../application-window/WindowControl";
-import OneDriveAccordion from "./sidemenu/OneDriveAccordion";
-import Pinned from "./sidemenu/Pinned";
+import Pinned from "./Navigation/sidemenu/Pinned";
 import {useEffect, useState} from "react";
+import OneDriveAccordion from "./Navigation/sidemenu/OneDriveAccordion";
+import FSButton from "./Shared/FSButton";
+import Search from "./Search";
+import NavigationBar from "./Navigation/NavigationBar";
+import Sidemenu from "./Navigation/sidemenu/Sidemenu";
+import NavigationControls from "./Navigation/Controls/NavigationControls";
+import ActionButtons from "./ButtonGroups/ActionButtons";
 
 export default function FileSystem() {
   const isShowing = useIsShowing(false);
@@ -28,14 +25,6 @@ export default function FileSystem() {
     "microsoft",
     "netflix",
   ]);
-
-  const mapCrumbs = crumbs?.map((item) => {
-    return (
-      <Link variant="caption" className="text-black" underline="none" key={item}>
-        {item}
-      </Link>
-    );
-  });
 
   return (
     <>
@@ -70,125 +59,28 @@ export default function FileSystem() {
           </div>
 
           <div className="w-full flex mt-4">
-            <Button className="flex items-center border-none text-black">
-              <Image width={19} height={19} alt="windows 11 icon" src="/../public/images/new.png" />
-              <span className="ml-1">New</span>
-            </Button>
-
+            <FSButton text="New" src="new.png" />
             <div>
               <Divider orientation="vertical" variant="fullWidth" className="bg-black mx-1" />
             </div>
-
-            <ButtonGroup variant="text">
-              <Button className="flex items-center border-none text-black">
-                <Image
-                  width={19}
-                  height={19}
-                  alt="windows 11 icon"
-                  src="/../public/images/cut.png"
-                />
-              </Button>
-              <Button className="flex items-center border-none text-black">
-                <Image
-                  width={19}
-                  height={19}
-                  alt="windows 11 icon"
-                  src="/../public/images/copy.png"
-                />
-              </Button>
-              <Button className="flex items-center border-none text-black">
-                <Image
-                  width={19}
-                  height={19}
-                  alt="windows 11 icon"
-                  src="/../public/images/paste.png"
-                />
-              </Button>
-              <Button className="flex items-center border-none text-black">
-                <Image
-                  width={19}
-                  height={19}
-                  alt="windows 11 icon"
-                  src="/../public/images/rename.png"
-                />
-              </Button>
-              <Button className="flex items-center border-none text-black">
-                <Image
-                  width={19}
-                  height={19}
-                  alt="windows 11 icon"
-                  src="/../public/images/share.png"
-                />
-              </Button>
-            </ButtonGroup>
-
+            <ActionButtons />
             <div>
               <Divider orientation="vertical" variant="fullWidth" className="bg-black mx-1" />
             </div>
-
             <ButtonGroup variant="text">
-              <Button className="flex items-center border-none text-black">
-                <Image
-                  width={19}
-                  height={19}
-                  alt="windows 11 icon"
-                  src="/../public/images/sort.png"
-                />
-                <span className="ml-1">Sort</span>
-              </Button>
-              <Button className="flex items-center border-none text-black">
-                <Image
-                  width={19}
-                  height={19}
-                  alt="windows 11 icon"
-                  src="/../public/images/view.png"
-                />
-                <span className="ml-1">View</span>
-              </Button>
+              <FSButton src="sort.png" text="Sort" />
+              <FSButton src="view.png" text="View" />
             </ButtonGroup>
           </div>
         </Modal.Header>
 
         <Modal.Body>
           <div className="flex items-center">
-            <BackButtonIcon />
-            <ForwardButtonIcon />
-            <UpOneLevelButton />
-            <div className="border-1 border-[#bbb] w-3/4 p-2 flex">
-              <Breadcrumbs separator="›">
-                <Image
-                  width={19}
-                  height={19}
-                  alt="windows 11 icon"
-                  src="/../public/images/user-sm.png"
-                />
-                {mapCrumbs}
-              </Breadcrumbs>
-            </div>
-            <TextField
-              placeholder="Search"
-              variant="outlined"
-              className="mx-2 p-2"
-              size="small"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <SearchSharp />
-                  </InputAdornment>
-                ),
-              }}
-            />
+            <NavigationControls />
+            <NavigationBar crumbsArray={crumbs} />
+            <Search />
           </div>
-          <Grid container>
-            <Grid item xs={2} className="border-r-8">
-              <div className="flex mb-2.5 hover:bg-[#e5f3ff]">
-                <Image src="/../public/images/house.png" width={18} height={14} alt="house icon" />
-                <span className="ml-1 text-sm">Home</span>
-              </div>
-              <OneDriveAccordion />
-              <Pinned />
-            </Grid>
-          </Grid>
+          <Sidemenu />
         </Modal.Body>
       </Modal>
     </>

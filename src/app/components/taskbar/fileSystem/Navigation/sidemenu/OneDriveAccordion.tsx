@@ -1,7 +1,7 @@
 import {useIsShowing} from "@/app/hooks/isShowing";
 import {Divider} from "@mui/material";
 import Image from "next/image";
-import ExpandArrow from "../ExpandArrow";
+import ExpandArrow from "../../Shared/ExpandArrow";
 
 export default function OneDriveAccordion() {
   const isOpen = useIsShowing(false);
