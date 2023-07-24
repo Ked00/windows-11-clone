@@ -1,6 +1,6 @@
 import BackButtonIcon from "./backbuttonIcon";
-import ForwardButtonIcon from "../../../../../../../public/svgIcons/forwardbuttonIcon";
-import UpOneLevelButton from "../../../../../../../public/svgIcons/upOneLevelButton";
+import ForwardButtonIcon from "./forwardbuttonIcon";
+import UpOneLevelButton from "./upOneLevelButton";
 
 export default function NavigationControls() {
   return (

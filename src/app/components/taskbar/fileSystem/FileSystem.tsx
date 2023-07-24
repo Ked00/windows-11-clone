@@ -2,14 +2,9 @@ import IconButton from "../../IconButton";
 import {Modal} from "react-bootstrap";
 import {useIsShowing} from "@/app/hooks/isShowing";
 import Image from "next/image";
-import {ButtonGroup, Divider, Grid} from "@mui/material";
-import BackButtonIcon from "./Navigation/Controls/backbuttonIcon";
-import ForwardButtonIcon from "../../../../../public/svgIcons/forwardbuttonIcon";
-import UpOneLevelButton from "../../../../../public/svgIcons/upOneLevelButton";
+import {ButtonGroup, Divider} from "@mui/material";
 import WindowControl from "../../application-window/WindowControl";
-import Pinned from "./Navigation/sidemenu/Pinned";
-import {useEffect, useState} from "react";
-import OneDriveAccordion from "./Navigation/sidemenu/OneDriveAccordion";
+import {useState} from "react";
 import FSButton from "./Shared/FSButton";
 import Search from "./Search";
 import NavigationBar from "./Navigation/NavigationBar";
@@ -25,6 +20,16 @@ export default function FileSystem() {
     "microsoft",
     "netflix",
   ]);
+  const [size, setSize] = useState<"xl" | true>("xl");
+  
+  function changeSize(){
+    if(size == "xl"){
+      setSize(true)
+    }
+    else{
+      setSize("xl")
+    }
+  }
 
   return (
     <>
@@ -36,13 +41,13 @@ export default function FileSystem() {
         width={30}
         onClicked={isShowing.reverseState}
       />
-
       <Modal
         animation={false}
         onHide={isShowing.reverseState}
         backdrop={false}
         show={isShowing.isShowing}
-        size="xl"
+        size={size}
+        fullscreen={size} 
       >
         <Modal.Header className="flex flex-col p-2 bg-[#eff4f9]">
           <div className="flex justify-between w-full">
@@ -55,18 +60,22 @@ export default function FileSystem() {
               />
               <p className="ml-1 text-sm">File Explorer</p>
             </div>
-            <WindowControl close={isShowing.reverseState} />
+            <WindowControl close={isShowing.reverseState} minimize={changeSize}/>
           </div>
 
           <div className="w-full flex mt-4">
             <FSButton text="New" src="new.png" />
+
             <div>
               <Divider orientation="vertical" variant="fullWidth" className="bg-black mx-1" />
             </div>
+
             <ActionButtons />
+
             <div>
               <Divider orientation="vertical" variant="fullWidth" className="bg-black mx-1" />
             </div>
+
             <ButtonGroup variant="text">
               <FSButton src="sort.png" text="Sort" />
               <FSButton src="view.png" text="View" />

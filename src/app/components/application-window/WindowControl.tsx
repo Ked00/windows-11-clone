@@ -3,16 +3,16 @@ import Image from "next/image";
 
 type Props = {
   close: () => void;
-  minimize?: () => void;
+  minimize: () => void;
 };
 
 export default function WindowControl(props: Props) {
   return (
     <ButtonGroup size="small">
-      <Button className="border-none" onClick={props.minimize}>
+      <Button className="border-none">
         <Image width={15} height={15} alt="windows 11 icon" src="/../public/images/minimize.png" />
       </Button>
-      <Button className="border-none">
+      <Button className="border-none" onClick={props.minimize}>
         <Image
           width={15}
           height={15}
