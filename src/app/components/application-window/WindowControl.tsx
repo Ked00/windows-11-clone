@@ -9,11 +9,11 @@ type Props = {
 
 export default function WindowControl(props: Props) {
   return (
-    <ButtonGroup size="small">
-      <Button className="border-none" onClick={props.hide}>
+    <ButtonGroup size="small" className="border-none">
+      <Button onClick={props.hide}>
         <Image width={15} height={15} alt="windows 11 icon" src="/../public/images/minimize.png" />
       </Button>
-      <Button className="border-none" onClick={props.minimize}>
+      <Button onClick={props.minimize}>
         <Image
           width={15}
           height={15}
@@ -21,7 +21,7 @@ export default function WindowControl(props: Props) {
           src="/../public/images/restoreDown.png"
         />
       </Button>
-      <Button className="border-none" onClick={props.close}>
+      <Button onClick={props.close}>
         <Image width={15} height={15} alt="windows 11 icon" src="/../public/images/close.png" />
       </Button>
     </ButtonGroup>

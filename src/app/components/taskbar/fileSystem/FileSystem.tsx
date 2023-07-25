@@ -11,17 +11,13 @@ import NavigationBar from "./Navigation/NavigationBar";
 import Sidemenu from "./Navigation/sidemenu/Sidemenu";
 import NavigationControls from "./Navigation/Controls/NavigationControls";
 import ActionButtons from "./ButtonGroups/ActionButtons";
+import {MouseEvent} from "react";
 
 export default function FileSystem() {
   const isShowing = useIsShowing(false);
   const [size, setSize] = useState<"xl" | true>("xl");
   const [hidden, setHidden] = useState("visible");
-  const [crumbs, setCrumbs] = useState<string[] | null>([
-    "google",
-    "apple",
-    "microsoft",
-    "netflix",
-  ]);
+  const [crumbs, setCrumbs] = useState<string[]>([]);
 
   function changeSize() {
     if (size == "xl") {
@@ -39,6 +35,18 @@ export default function FileSystem() {
     }
   }
 
+  function textOnClick(event: MouseEvent) {
+    const text = event.currentTarget.innerHTML;
+    const matchingText = crumbs.find(match => match == text)
+
+    if(matchingText == text){
+      setCrumbs([text])
+    }
+    else{
+      setCrumbs(prev => [...prev, text])
+    }
+  }
+  
   return (
     <>
       <IconButton
@@ -69,7 +77,9 @@ export default function FileSystem() {
                 alt="windows 11 icon"
                 src="/../public/images/folder.ico"
               />
-              <p className="ml-1 text-sm">File Explorer</p>
+              <p className="ml-1 text-sm">
+                File Explorer
+              </p>
             </div>
             <WindowControl close={isShowing.reverseState} minimize={changeSize} hide={hide} />
           </div>
@@ -100,7 +110,7 @@ export default function FileSystem() {
             <NavigationBar crumbsArray={crumbs} />
             <Search />
           </div>
-          <Sidemenu />
+          <Sidemenu addCrumbs={textOnClick} />
         </Modal.Body>
       </Modal>
     </>
